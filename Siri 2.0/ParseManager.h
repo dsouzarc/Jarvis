@@ -10,4 +10,6 @@
 
 @interface ParseManager : NSObject
 
+
+
 @end

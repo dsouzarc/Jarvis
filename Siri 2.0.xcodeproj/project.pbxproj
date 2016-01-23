@@ -47,6 +47,7 @@
 		9405F7861C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */; };
 		9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */; };
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
+		948646261C541A2100EC93F7 /* ParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 948646251C541A2100EC93F7 /* ParseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic.png"; sourceTree = "<group>"; };
 		9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
 		9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
+		948646241C541A2100EC93F7 /* ParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseManager.h; sourceTree = "<group>"; };
+		948646251C541A2100EC93F7 /* ParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				9405F7551C535E1F00C39CD8 /* Constants.h */,
 				9405F7561C535E1F00C39CD8 /* Constants.m */,
 				9405F7581C535EBA00C39CD8 /* Constants.plist */,
+				948646241C541A2100EC93F7 /* ParseManager.h */,
+				948646251C541A2100EC93F7 /* ParseManager.m */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
+				948646261C541A2100EC93F7 /* ParseManager.m in Sources */,
 				9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */,
 				9405F7571C535E1F00C39CD8 /* Constants.m in Sources */,
 			);

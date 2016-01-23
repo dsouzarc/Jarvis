@@ -9,9 +9,9 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
+
 @property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
-
 
 @end
 
@@ -91,8 +91,6 @@
         self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     }];
 }
-
-
 
 - (void) startSearch
 {
@@ -258,7 +256,6 @@
 {
     //self.listeningButton.enabled = NO;
 
-    
     [HoundVoiceSearch.instance
      
      startListeningWithCompletionHandler:^(NSError* error) {
@@ -313,17 +310,12 @@
 
 - (IBAction)microphoneButtonPressed:(id)sender
 {
-    //self.listeningButton.enabled = NO;
-    
     static BOOL isListening = NO;
     
     if (!isListening) {
-        // Start listening
-        
         [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  isListening = YES;
-                 
                  if (error) {
                      NSLog(@"ERROR: %@", error.localizedDescription);
                  }
@@ -331,16 +323,9 @@
          }];
     }
     else{
-        // Stop listening
-        
-        [HoundVoiceSearch.instance
-         
-         stopListeningWithCompletionHandler:^(NSError *error) {
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 
+        [HoundVoiceSearch.instance stopListeningWithCompletionHandler:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
                  isListening = NO;
-                 
                  if (error){
                      NSLog(@"%@", error.localizedDescription);
                  }
