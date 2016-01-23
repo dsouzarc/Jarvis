@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
 
 @end
 
@@ -17,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[HoundVoiceSearch instance] enableSpeech];
+    [[HoundVoiceSearch instance] enableHotPhraseDetection];
+    [[HoundVoiceSearch instance] enableEndOfSpeechDetection];
+    
+}
+
+- (void) startSearch
+{
     NSDictionary* requestInfo = @{
                                   
                                   // insert any additional parameters
@@ -72,6 +81,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [NSNotificationCenter.defaultCenter
      addObserver:self selector:@selector(updateState)
      name:HoundVoiceSearchStateChangeNotification object:nil];
@@ -209,7 +220,7 @@
 - (void)hotPhrase
 {
     // "OK Hound" detected
-    
+    [self startSearch];
     NSLog(@"OK HOUND DETECTED");
 }
 
@@ -236,43 +247,6 @@
      }
      ];
 
-}
-
-- (IBAction)searchButtonTapped
-{
-    // Take action based on current voice search state
-    
-    switch (HoundVoiceSearch.instance.state)
-    {
-        case HoundVoiceSearchStateNone:
-            
-            break;
-            
-        case HoundVoiceSearchStateReady:
-            NSLog(@"READY FOR SEARCH");
-            
-            //[self startSearch];
-            
-            break;
-            
-        case HoundVoiceSearchStateRecording:
-            
-            [HoundVoiceSearch.instance stopSearch];
-            
-            break;
-            
-        case HoundVoiceSearchStateSearching:
-            
-            [HoundVoiceSearch.instance cancelSearch];
-            
-            break;
-            
-        case HoundVoiceSearchStateSpeaking:
-            
-            [HoundVoiceSearch.instance stopSpeaking];
-            
-            break;
-    }
 }
 
 - (void)enableButtonInView:(UIView*)view
@@ -318,6 +292,89 @@
     }
 }
 
+
+- (IBAction)searchButtonTapped
+{
+    // Take action based on current voice search state
+    
+    switch (HoundVoiceSearch.instance.state)
+    {
+        case HoundVoiceSearchStateNone:
+            
+            break;
+            
+        case HoundVoiceSearchStateReady:
+            
+            [self startSearch];
+            
+            break;
+            
+        case HoundVoiceSearchStateRecording:
+            
+            [HoundVoiceSearch.instance stopSearch];
+            
+            break;
+            
+        case HoundVoiceSearchStateSearching:
+            
+            [HoundVoiceSearch.instance cancelSearch];
+            
+            break;
+            
+        case HoundVoiceSearchStateSpeaking:
+            
+            [HoundVoiceSearch.instance stopSpeaking];
+            
+            break;
+    }
+}
+
+- (IBAction)microphoneButtonPressed:(id)sender {
+    //self.listeningButton.enabled = NO;
+    
+    static BOOL isListening = NO;
+    
+    if (!isListening)
+    {
+        // Start listening
+        
+        [HoundVoiceSearch.instance
+         
+         startListeningWithCompletionHandler:^(NSError* error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 isListening = YES;
+                 
+                 if (error)
+                 {
+                     NSLog(@"ERROR: %@", error.localizedDescription);
+                 }
+             });
+         }
+         ];
+    }
+    else
+    {
+        
+        // Stop listening
+        
+        [HoundVoiceSearch.instance
+         
+         stopListeningWithCompletionHandler:^(NSError *error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 isListening = NO;
+                 
+                 if (error)
+                 {
+                     NSLog(@"%@", error.localizedDescription);
+                 }
+             });
+         }
+         ];
+    }
+}
 
 
 @end

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="houndifyMicrophoneButton" destination="gSY-d6-grq" id="yiz-3F-bnf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,9 +15,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-d6-grq">
+                    <rect key="frame" x="94" y="353" width="102" height="143"/>
+                    <color key="backgroundColor" red="0.43639125150679658" green="0.55106024720920299" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="143" id="4Jb-Vi-1sK"/>
+                        <constraint firstAttribute="width" constant="102" id="CCf-PH-4Af"/>
+                    </constraints>
+                    <state key="normal" image="ic-blk-tabbar-houndify-mic"/>
+                    <connections>
+                        <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="mmi-7f-8ao"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KW-2V-9Ye">
+                    <rect key="frame" x="35" y="215" width="98" height="30"/>
+                    <state key="normal" title="Search Button"/>
+                    <connections>
+                        <action selector="searchButtonTapped" destination="-1" eventType="touchUpInside" id="dz7-sl-8oM"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="341" y="388"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic-blk-tabbar-houndify-mic" width="16" height="25"/>
+    </resources>
 </document>

@@ -35,6 +35,18 @@
 		9405F7691C5368AA00C39CD8 /* libHoundSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7681C5368AA00C39CD8 /* libHoundSDK.a */; };
 		9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F76C1C53D6BB00C39CD8 /* MainViewController.m */; };
 		9405F76F1C53D6BB00C39CD8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */; };
+		9405F77D1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */; };
+		9405F77E1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */; };
+		9405F77F1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7731C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png */; };
+		9405F7801C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7741C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png */; };
+		9405F7811C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7751C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png */; };
+		9405F7821C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7761C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png */; };
+		9405F7831C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7771C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png */; };
+		9405F7841C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7781C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png */; };
+		9405F7851C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7791C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png */; };
+		9405F7861C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */; };
+		9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */; };
+		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +105,18 @@
 		9405F76B1C53D6BB00C39CD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		9405F76C1C53D6BB00C39CD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-tabbar-houndify-mic.png"; sourceTree = "<group>"; };
+		9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-tabbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
+		9405F7731C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-tabbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
+		9405F7741C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-toolbar-houndify-mic.png"; sourceTree = "<group>"; };
+		9405F7751C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-toolbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
+		9405F7761C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-toolbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
+		9405F7771C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-tabbar-houndify-mic.png"; sourceTree = "<group>"; };
+		9405F7781C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-tabbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
+		9405F7791C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-tabbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
+		9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic.png"; sourceTree = "<group>"; };
+		9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
+		9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +201,18 @@
 		9405F70B1C535D3000C39CD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */,
+				9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */,
+				9405F7731C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png */,
+				9405F7741C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png */,
+				9405F7751C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png */,
+				9405F7761C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png */,
+				9405F7771C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png */,
+				9405F7781C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png */,
+				9405F7791C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png */,
+				9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */,
+				9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */,
+				9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */,
 				9405F70C1C535D3000C39CD8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -350,8 +386,20 @@
 				9405F76F1C53D6BB00C39CD8 /* MainViewController.xib in Resources */,
 				9405F71B1C535D3000C39CD8 /* LaunchScreen.storyboard in Resources */,
 				9405F7181C535D3000C39CD8 /* Assets.xcassets in Resources */,
+				9405F7811C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png in Resources */,
 				9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */,
+				9405F7801C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png in Resources */,
+				9405F7861C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png in Resources */,
+				9405F7821C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png in Resources */,
 				9405F7161C535D3000C39CD8 /* Main.storyboard in Resources */,
+				9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */,
+				9405F77E1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png in Resources */,
+				9405F7841C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png in Resources */,
+				9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */,
+				9405F7851C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png in Resources */,
+				9405F7831C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png in Resources */,
+				9405F77F1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png in Resources */,
+				9405F77D1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
