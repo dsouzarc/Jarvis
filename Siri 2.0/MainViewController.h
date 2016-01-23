@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 #import <HoundSDK/HoundSDK.h>
 
 #import "Constants.h"

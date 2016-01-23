@@ -27,10 +27,8 @@
     [Hound setClientID:[Constants getHoundifyClientId]];
     [Hound setClientKey:[Constants getHoundifyClientKey]];
     
-    NSLog(@"%@\t%@", [Constants getHoundifyClientId], [Constants getHoundifyClientKey]);
-    
     CLLocationManager* myLocationManager = [[CLLocationManager alloc] init];
-    [myLocationManager requestAlwaysAuthorization];
+    //[myLocationManager requestAlwaysAuthorization];
     
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         if(!granted) {

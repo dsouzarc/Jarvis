@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="houndifyMicrophoneButton" destination="gSY-d6-grq" id="yiz-3F-bnf"/>
+                <outlet property="textView" destination="PY8-ZB-qml" id="Ykd-HT-iLo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,23 +17,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-d6-grq">
-                    <rect key="frame" x="94" y="353" width="102" height="143"/>
-                    <color key="backgroundColor" red="0.43639125150679658" green="0.55106024720920299" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="143" id="4Jb-Vi-1sK"/>
-                        <constraint firstAttribute="width" constant="102" id="CCf-PH-4Af"/>
-                    </constraints>
-                    <state key="normal" image="ic-blk-tabbar-houndify-mic"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PY8-ZB-qml">
+                    <rect key="frame" x="40" y="100" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-d6-grq">
+                    <rect key="frame" x="120" y="679" width="80" height="80"/>
+                    <color key="backgroundColor" red="0.30658946269246268" green="0.4733862885850787" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="ic-wht-toolbar-houndify-mic"/>
                     <connections>
                         <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="mmi-7f-8ao"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KW-2V-9Ye">
-                    <rect key="frame" x="35" y="215" width="98" height="30"/>
-                    <state key="normal" title="Search Button"/>
-                    <connections>
-                        <action selector="searchButtonTapped" destination="-1" eventType="touchUpInside" id="dz7-sl-8oM"/>
                     </connections>
                 </button>
             </subviews>
@@ -42,6 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic-blk-tabbar-houndify-mic" width="16" height="25"/>
+        <image name="ic-wht-toolbar-houndify-mic" width="19" height="29"/>
     </resources>
 </document>

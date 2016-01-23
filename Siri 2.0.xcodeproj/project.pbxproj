@@ -193,6 +193,7 @@
 				9405F7171C535D3000C39CD8 /* Assets.xcassets */,
 				9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */,
 				9405F71C1C535D3000C39CD8 /* Info.plist */,
+				9405F7891C53ED6B00C39CD8 /* Houndify Icons */,
 				9405F70B1C535D3000C39CD8 /* Supporting Files */,
 			);
 			path = "Siri 2.0";
@@ -201,18 +202,6 @@
 		9405F70B1C535D3000C39CD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */,
-				9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */,
-				9405F7731C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png */,
-				9405F7741C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png */,
-				9405F7751C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png */,
-				9405F7761C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png */,
-				9405F7771C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png */,
-				9405F7781C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png */,
-				9405F7791C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png */,
-				9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */,
-				9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */,
-				9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */,
 				9405F70C1C535D3000C39CD8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -277,6 +266,25 @@
 				9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */,
 			);
 			name = "Main View Controller";
+			sourceTree = "<group>";
+		};
+		9405F7891C53ED6B00C39CD8 /* Houndify Icons */ = {
+			isa = PBXGroup;
+			children = (
+				9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */,
+				9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */,
+				9405F7731C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png */,
+				9405F7741C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png */,
+				9405F7751C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png */,
+				9405F7761C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png */,
+				9405F7771C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png */,
+				9405F7781C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png */,
+				9405F7791C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png */,
+				9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */,
+				9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */,
+				9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */,
+			);
+			name = "Houndify Icons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
