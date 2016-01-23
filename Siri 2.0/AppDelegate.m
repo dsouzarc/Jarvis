@@ -10,6 +10,8 @@
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) MainViewController *mainViewController;
+
 @end
 
 @implementation AppDelegate
@@ -25,7 +27,24 @@
     [Hound setClientID:[Constants getHoundifyClientId]];
     [Hound setClientKey:[Constants getHoundifyClientKey]];
     
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if(!granted) {
+            //Uh oh
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Microphone permission needed" message:@"Sorry, but you must accept the request to use the microphone. #SorryNotSorry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+        else {
+            self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+            self.window.rootViewController = self.mainViewController;
+            
+        }
+    }];
     return YES;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: UIApplicationOpenSettingsURLString]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

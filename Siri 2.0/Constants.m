@@ -36,4 +36,9 @@
     return [value objectForKey:key];
 }
 
++ (NSString*) soundHoundAudioURL
+{
+    return @"https://api.houndify.com/v1/audio";
+}
+
 @end

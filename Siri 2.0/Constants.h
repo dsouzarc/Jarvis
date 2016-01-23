@@ -16,5 +16,7 @@
 + (NSString*) getHoundifyClientKey;
 + (NSString*) getHoundifyClientId;
 
++ (NSString*) soundHoundAudioURL;
+
 
 @end

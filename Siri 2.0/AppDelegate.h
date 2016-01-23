@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import <Parse/Parse.h>
-
 #import <HoundSDK/HoundSDK.h>
 
 #import "Constants.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "MainViewController.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
