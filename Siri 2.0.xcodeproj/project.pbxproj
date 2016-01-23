@@ -15,6 +15,18 @@
 		9405F71B1C535D3000C39CD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */; };
 		9405F7261C535D3000C39CD8 /* Siri_2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F7251C535D3000C39CD8 /* Siri_2_0Tests.m */; };
 		9405F7311C535D3000C39CD8 /* Siri_2_0UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F7301C535D3000C39CD8 /* Siri_2_0UITests.m */; };
+		9405F7401C535D6D00C39CD8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F73E1C535D6D00C39CD8 /* Bolts.framework */; };
+		9405F7411C535D6D00C39CD8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F73F1C535D6D00C39CD8 /* Parse.framework */; };
+		9405F7431C535D9A00C39CD8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7421C535D9A00C39CD8 /* AudioToolbox.framework */; };
+		9405F7451C535DA000C39CD8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7441C535DA000C39CD8 /* CFNetwork.framework */; };
+		9405F7471C535DA700C39CD8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7461C535DA700C39CD8 /* CoreGraphics.framework */; };
+		9405F7491C535DB100C39CD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7481C535DB100C39CD8 /* QuartzCore.framework */; };
+		9405F74B1C535DB700C39CD8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F74A1C535DB700C39CD8 /* Security.framework */; };
+		9405F74D1C535DBF00C39CD8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F74C1C535DBF00C39CD8 /* StoreKit.framework */; };
+		9405F74F1C535DCB00C39CD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F74E1C535DCB00C39CD8 /* SystemConfiguration.framework */; };
+		9405F7511C535DD400C39CD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7501C535DD400C39CD8 /* libz.tbd */; };
+		9405F7531C535DDD00C39CD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */; };
+		9405F7571C535E1F00C39CD8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F7561C535E1F00C39CD8 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +63,19 @@
 		9405F72C1C535D3000C39CD8 /* Siri 2.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Siri 2.0UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9405F7301C535D3000C39CD8 /* Siri_2_0UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Siri_2_0UITests.m; sourceTree = "<group>"; };
 		9405F7321C535D3000C39CD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9405F73E1C535D6D00C39CD8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		9405F73F1C535D6D00C39CD8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		9405F7421C535D9A00C39CD8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9405F7441C535DA000C39CD8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9405F7461C535DA700C39CD8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9405F7481C535DB100C39CD8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9405F74A1C535DB700C39CD8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9405F74C1C535DBF00C39CD8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9405F74E1C535DCB00C39CD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9405F7501C535DD400C39CD8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9405F7551C535E1F00C39CD8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		9405F7561C535E1F00C39CD8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +83,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9405F7531C535DDD00C39CD8 /* libsqlite3.tbd in Frameworks */,
+				9405F7511C535DD400C39CD8 /* libz.tbd in Frameworks */,
+				9405F74F1C535DCB00C39CD8 /* SystemConfiguration.framework in Frameworks */,
+				9405F74D1C535DBF00C39CD8 /* StoreKit.framework in Frameworks */,
+				9405F74B1C535DB700C39CD8 /* Security.framework in Frameworks */,
+				9405F7491C535DB100C39CD8 /* QuartzCore.framework in Frameworks */,
+				9405F7471C535DA700C39CD8 /* CoreGraphics.framework in Frameworks */,
+				9405F7451C535DA000C39CD8 /* CFNetwork.framework in Frameworks */,
+				9405F7431C535D9A00C39CD8 /* AudioToolbox.framework in Frameworks */,
+				9405F7411C535D6D00C39CD8 /* Parse.framework in Frameworks */,
+				9405F7401C535D6D00C39CD8 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9405F70A1C535D3000C39CD8 /* Siri 2.0 */,
+				9405F7541C535E0300C39CD8 /* Frameworks and Libraries */,
 				9405F7241C535D3000C39CD8 /* Siri 2.0Tests */,
 				9405F72F1C535D3000C39CD8 /* Siri 2.0UITests */,
 				9405F7091C535D3000C39CD8 /* Products */,
@@ -110,6 +147,8 @@
 				9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */,
 				9405F71C1C535D3000C39CD8 /* Info.plist */,
 				9405F70B1C535D3000C39CD8 /* Supporting Files */,
+				9405F7551C535E1F00C39CD8 /* Constants.h */,
+				9405F7561C535E1F00C39CD8 /* Constants.m */,
 			);
 			path = "Siri 2.0";
 			sourceTree = "<group>";
@@ -138,6 +177,24 @@
 				9405F7321C535D3000C39CD8 /* Info.plist */,
 			);
 			path = "Siri 2.0UITests";
+			sourceTree = "<group>";
+		};
+		9405F7541C535E0300C39CD8 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */,
+				9405F7501C535DD400C39CD8 /* libz.tbd */,
+				9405F74E1C535DCB00C39CD8 /* SystemConfiguration.framework */,
+				9405F74C1C535DBF00C39CD8 /* StoreKit.framework */,
+				9405F74A1C535DB700C39CD8 /* Security.framework */,
+				9405F7481C535DB100C39CD8 /* QuartzCore.framework */,
+				9405F7461C535DA700C39CD8 /* CoreGraphics.framework */,
+				9405F7441C535DA000C39CD8 /* CFNetwork.framework */,
+				9405F7421C535D9A00C39CD8 /* AudioToolbox.framework */,
+				9405F73E1C535D6D00C39CD8 /* Bolts.framework */,
+				9405F73F1C535D6D00C39CD8 /* Parse.framework */,
+			);
+			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +330,7 @@
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
+				9405F7571C535E1F00C39CD8 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +471,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Siri 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
@@ -424,6 +486,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Siri 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
