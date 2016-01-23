@@ -47,7 +47,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    
     //Translates from bottom to middle of screen
     [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^(void) {
         self.houndifyMicrophoneButton.alpha = 1.0f;
@@ -59,7 +59,7 @@
             self.houndifyMicrophoneButton.alpha = 1.5f;
             [self.houndifyMicrophoneButton setFrame:CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3))];
             self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
-        }completion:^(BOOL completed) {
+        } completion:^(BOOL completed) {
             
         }];
     }];
@@ -100,33 +100,36 @@
     
     [HoundVoiceSearch.instance startSearchWithRequestInfo:requestInfo endPointURL:endPointURL
      
-     responseHandler:^(NSError* error, HoundVoiceSearchResponseType responseType, id response, NSDictionary* dictionary) {
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             if (error) {
-                 NSLog(@"Error: %@", error.description);
-             }
-             else {
-                 if (responseType == HoundVoiceSearchResponseTypePartialTranscription) {
-                     
-                     HoundDataPartialTranscript* partialTranscript = (HoundDataPartialTranscript*)response;
-                     NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
-                 }
-                 else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
-                     // Display response JSON
-                     
-                     NSLog(@"HERE: %@", dictionary);
-                     // Any properties from the documentation can be accessed through the keyed accessors, e.g.:
-                     
-                     HoundDataHoundServer* houndServer = response;
-                     HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
-                     NSDictionary* nativeData = commandResult[@"NativeData"];
-                     NSLog(@"NativeData: %@", nativeData);
-                 }
-             }
-         });
-     }];
+                                          responseHandler:^(NSError* error, HoundVoiceSearchResponseType responseType, id response, NSDictionary* dictionary) {
+                                              
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  
+                                                  if (error) {
+                                                      NSLog(@"Error: %@", error.description);
+                                                  }
+                                                  else {
+                                                      if (responseType == HoundVoiceSearchResponseTypePartialTranscription) {
+                                                          
+                                                          HoundDataPartialTranscript* partialTranscript = (HoundDataPartialTranscript*)response;
+                                                          NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
+                                                      }
+                                                      else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
+                                                          // Display response JSON
+                                                          
+                                                          NSLog(@"HERE: %@", dictionary);
+                                                          // Any properties from the documentation can be accessed through the keyed accessors, e.g.:
+                                                          
+                                                          HoundDataHoundServer* houndServer = response;
+                                                          HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
+                                                          NSDictionary* nativeData = commandResult[@"NativeData"];
+                                                          NSLog(@"NativeData: %@", nativeData);
+                                                      }
+                                                      else {
+                                                          NSLog(@"WE GOT NOTHING: %@", response);
+                                                      }
+                                                  }
+                                              });
+                                          }];
 }
 
 - (void)updateState
@@ -136,16 +139,16 @@
             
             NSLog(@"NOT READY");
             /*self.listeningButton.selected = NO;
-            
-            self.searchBar.text = @"Not Ready";
-            
-            self.searchButton.userInteractionEnabled = NO;
-            
-            [self.searchButton setTitle:@"" forState:UIControlStateNormal];
-            
-            self.searchButton.hidden = YES;
-            
-            self.searchBar.showsCancelButton = NO;*/
+             
+             self.searchBar.text = @"Not Ready";
+             
+             self.searchButton.userInteractionEnabled = NO;
+             
+             [self.searchButton setTitle:@"" forState:UIControlStateNormal];
+             
+             self.searchButton.hidden = YES;
+             
+             self.searchBar.showsCancelButton = NO;*/
             
             break;
             
@@ -154,15 +157,15 @@
             NSLog(@"READY");
             
             /*self.searchBar.text = @"Ready";
-            
-            self.searchButton.userInteractionEnabled = YES;
-            
-            [self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
-            
-            self.searchButton.backgroundColor = self.view.tintColor;
-            self.searchButton.hidden = NO;
-            
-            self.searchBar.showsCancelButton = NO;*/
+             
+             self.searchButton.userInteractionEnabled = YES;
+             
+             [self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
+             
+             self.searchButton.backgroundColor = self.view.tintColor;
+             self.searchButton.hidden = NO;
+             
+             self.searchBar.showsCancelButton = NO;*/
             
             break;
             
@@ -170,17 +173,17 @@
             
             NSLog(@"RECORDING");
             /*self.searchBar.text = @"Recording";
-            
-            self.searchButton.userInteractionEnabled = YES;
-            
-            [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
-            
-            self.searchButton.backgroundColor = self.view.tintColor;
-            self.searchButton.hidden = NO;
-            
-            self.searchBar.showsCancelButton = YES;
-            
-            [self enableButtonInView:self.searchBar];*/
+             
+             self.searchButton.userInteractionEnabled = YES;
+             
+             [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
+             
+             self.searchButton.backgroundColor = self.view.tintColor;
+             self.searchButton.hidden = NO;
+             
+             self.searchBar.showsCancelButton = YES;
+             
+             [self enableButtonInView:self.searchBar];*/
             
             break;
             
@@ -189,33 +192,33 @@
             NSLog(@"SEARCHING");
             
             /*
-            
-            self.searchBar.text = @"Searching";
-            
-            self.searchButton.userInteractionEnabled = YES;
-            
-            [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
-            
-            self.searchButton.backgroundColor = self.view.tintColor;
-            self.searchButton.hidden = NO;
-            
-            self.searchBar.showsCancelButton = NO; */
+             
+             self.searchBar.text = @"Searching";
+             
+             self.searchButton.userInteractionEnabled = YES;
+             
+             [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
+             
+             self.searchButton.backgroundColor = self.view.tintColor;
+             self.searchButton.hidden = NO;
+             
+             self.searchBar.showsCancelButton = NO; */
             
             break;
             
         case HoundVoiceSearchStateSpeaking:
-            
-            /*self.searchBar.text = @"Speaking";
-            
-            self.searchButton.userInteractionEnabled = YES;
-            
-            [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
-            
-            self.searchButton.backgroundColor = UIColor.redColor;
-            self.searchButton.hidden = NO;
-            
-            self.searchBar.showsCancelButton = NO;*/
             NSLog(@"MORE THINGS");
+            /*self.searchBar.text = @"Speaking";
+             
+             self.searchButton.userInteractionEnabled = YES;
+             
+             [self.searchButton setTitle:@"Stop" forState:UIControlStateNormal];
+             
+             self.searchButton.backgroundColor = UIColor.redColor;
+             self.searchButton.hidden = NO;
+             
+             self.searchBar.showsCancelButton = NO;*/
+            
             
             break;
     }
@@ -255,33 +258,29 @@
 - (IBAction)listeningButtonTapped
 {
     //self.listeningButton.enabled = NO;
-
-    [HoundVoiceSearch.instance
-     
-     startListeningWithCompletionHandler:^(NSError* error) {
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             //self.listeningButton.enabled = YES;
-             //self.listeningButton.selected = YES;
-             
-             if (error)
-             {
-                 NSLog(@"ERROR: %@", error.localizedDescription);
-                 //self.textView.text = error.localizedDescription;
-             }
-         });
-     }
+    
+    [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //self.listeningButton.enabled = YES;
+            //self.listeningButton.selected = YES;
+            
+            if (error) {
+                NSLog(@"ERROR: %@", error.localizedDescription);
+                //self.textView.text = error.localizedDescription;
+            }
+        });
+    }
      ];
-
+    
 }
 
 - (IBAction)searchButtonTapped
 {
     // Take action based on current voice search state
     
-    switch (HoundVoiceSearch.instance.state)
-    {
+    switch (HoundVoiceSearch.instance.state) {
         case HoundVoiceSearchStateNone:
             break;
             
@@ -303,6 +302,46 @@
     }
 }
 
+
+
+- (void)enableButtonInView:(UIView*)view
+{
+    for (UIButton* button in view.subviews)
+    {
+        if ([button isKindOfClass:UIButton.class])
+        {
+            button.enabled = YES;
+        }
+        
+        [self enableButtonInView:button];
+    }
+}
+
+- (void)removeClearButtonFromView:(UIView*)view
+{
+    for (UITextField* textField in view.subviews)
+    {
+        if ([textField isKindOfClass:UITextField.class])
+        {
+            [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
+            
+            textField.textColor = UIColor.whiteColor;
+        }
+        
+        [self removeClearButtonFromView:textField];
+    }
+}
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar*)searchBar
+{
+    if (HoundVoiceSearch.instance.state == HoundVoiceSearchStateRecording)
+    {
+        [HoundVoiceSearch.instance cancelSearch];
+    }
+}
+
+
 - (IBAction)microphoneButtonHeldDown:(id)sender
 {
     
@@ -314,24 +353,29 @@
     
     if (!isListening) {
         [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 isListening = YES;
-                 if (error) {
-                     NSLog(@"ERROR: %@", error.localizedDescription);
-                 }
-             });
-         }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                isListening = YES;
+                if (error) {
+                    NSLog(@"ERROR: %@", error.localizedDescription);
+                }
+                else {
+                    NSLog(@"NO ERROR DOWN HERE");
+                }
+            });
+        }];
     }
     else{
         [HoundVoiceSearch.instance stopListeningWithCompletionHandler:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                 isListening = NO;
-                 if (error){
-                     NSLog(@"%@", error.localizedDescription);
-                 }
-             });
-         }];
+                isListening = NO;
+                if (error){
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            });
+        }];
     }
+    
+    [self startSearch];
 }
 
 @end
