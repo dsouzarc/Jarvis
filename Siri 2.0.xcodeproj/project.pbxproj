@@ -27,6 +27,7 @@
 		9405F7511C535DD400C39CD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7501C535DD400C39CD8 /* libz.tbd */; };
 		9405F7531C535DDD00C39CD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */; };
 		9405F7571C535E1F00C39CD8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F7561C535E1F00C39CD8 /* Constants.m */; };
+		9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7581C535EBA00C39CD8 /* Constants.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9405F7551C535E1F00C39CD8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9405F7561C535E1F00C39CD8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		9405F7581C535EBA00C39CD8 /* Constants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Constants.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,9 @@
 			children = (
 				9405F70E1C535D3000C39CD8 /* AppDelegate.h */,
 				9405F70F1C535D3000C39CD8 /* AppDelegate.m */,
+				9405F7551C535E1F00C39CD8 /* Constants.h */,
+				9405F7561C535E1F00C39CD8 /* Constants.m */,
+				9405F7581C535EBA00C39CD8 /* Constants.plist */,
 				9405F7111C535D3000C39CD8 /* ViewController.h */,
 				9405F7121C535D3000C39CD8 /* ViewController.m */,
 				9405F7141C535D3000C39CD8 /* Main.storyboard */,
@@ -147,8 +152,6 @@
 				9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */,
 				9405F71C1C535D3000C39CD8 /* Info.plist */,
 				9405F70B1C535D3000C39CD8 /* Supporting Files */,
-				9405F7551C535E1F00C39CD8 /* Constants.h */,
-				9405F7561C535E1F00C39CD8 /* Constants.m */,
 			);
 			path = "Siri 2.0";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				9405F71B1C535D3000C39CD8 /* LaunchScreen.storyboard in Resources */,
 				9405F7181C535D3000C39CD8 /* Assets.xcassets in Resources */,
+				9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */,
 				9405F7161C535D3000C39CD8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

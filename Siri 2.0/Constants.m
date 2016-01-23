@@ -10,6 +10,20 @@
 
 @implementation Constants
 
++ (NSString*) getParseAppId
+{
+    return [self getValueFromConstantsKey:@"parseAppId"];
+}
 
++ (NSString*) getParseClientId
+{
+    return [self getValueFromConstantsKey:@"parseClientId"];
+}
+
++ (NSString*) getValueFromConstantsKey:(NSString*)key
+{
+    NSDictionary *value = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Constants" ofType:@"plist"]];
+    return [value objectForKey:key];
+}
 
 @end

@@ -10,6 +10,7 @@
 
 @interface Constants : NSObject
 
-+ 
++ (NSString*) getParseAppId;
++ (NSString*) getParseClientId;
 
 @end
