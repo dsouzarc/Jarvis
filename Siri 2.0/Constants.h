@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Constants : NSObject
+
++ (instancetype) getInstance;
 
 + (NSString*) getParseAppId;
 + (NSString*) getParseClientId;
@@ -18,5 +21,7 @@
 
 + (NSString*) soundHoundAudioURL;
 
+- (double) getMyLongitude;
+- (double) getMyLatitude;
 
 @end

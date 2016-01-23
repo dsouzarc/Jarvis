@@ -8,7 +8,48 @@
 
 #import "Constants.h"
 
+static Constants *instance;
+
+@interface Constants ()
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+@end
+
 @implementation Constants
+
++ (instancetype) getInstance
+{
+    @synchronized(self) {
+        if(!instance) {
+            instance = [[self alloc] init];
+        }
+    }
+    return instance;
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    
+    if(self) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+        [self.locationManager startUpdatingLocation];
+    }
+    return self;
+}
+
+- (double) getMyLatitude
+{
+    return self.locationManager.location.coordinate.latitude;
+}
+
+- (double) getMyLongitude
+{
+    return self.locationManager.location.coordinate.longitude;
+}
 
 + (NSString*) getParseAppId
 {
