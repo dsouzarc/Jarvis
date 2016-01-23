@@ -20,6 +20,16 @@
     return [self getValueFromConstantsKey:@"parseClientId"];
 }
 
++ (NSString*) getHoundifyClientId
+{
+    return [self getValueFromConstantsKey:@"houndifyClientId"];
+}
+
++ (NSString*) getHoundifyClientKey
+{
+    return [self getValueFromConstantsKey:@"houndifyClientKey"];
+}
+
 + (NSString*) getValueFromConstantsKey:(NSString*)key
 {
     NSDictionary *value = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Constants" ofType:@"plist"]];

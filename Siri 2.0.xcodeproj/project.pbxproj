@@ -28,6 +28,11 @@
 		9405F7531C535DDD00C39CD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */; };
 		9405F7571C535E1F00C39CD8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F7561C535E1F00C39CD8 /* Constants.m */; };
 		9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7581C535EBA00C39CD8 /* Constants.plist */; };
+		9405F75D1C53647500C39CD8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F75C1C53647500C39CD8 /* AVFoundation.framework */; };
+		9405F75F1C53648500C39CD8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F75E1C53648500C39CD8 /* Accelerate.framework */; };
+		9405F7611C5364B300C39CD8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7601C5364B300C39CD8 /* libc++.tbd */; };
+		9405F7671C53685B00C39CD8 /* HoundSDK in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7661C53685B00C39CD8 /* HoundSDK */; };
+		9405F7691C5368AA00C39CD8 /* libHoundSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7681C5368AA00C39CD8 /* libHoundSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,11 @@
 		9405F7551C535E1F00C39CD8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9405F7561C535E1F00C39CD8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		9405F7581C535EBA00C39CD8 /* Constants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Constants.plist; sourceTree = "<group>"; };
+		9405F75C1C53647500C39CD8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9405F75E1C53648500C39CD8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9405F7601C5364B300C39CD8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9405F7661C53685B00C39CD8 /* HoundSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HoundSDK; sourceTree = "<group>"; };
+		9405F7681C5368AA00C39CD8 /* libHoundSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHoundSDK.a; path = HoundSDK/libHoundSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9405F7691C5368AA00C39CD8 /* libHoundSDK.a in Frameworks */,
+				9405F7611C5364B300C39CD8 /* libc++.tbd in Frameworks */,
+				9405F75F1C53648500C39CD8 /* Accelerate.framework in Frameworks */,
+				9405F7431C535D9A00C39CD8 /* AudioToolbox.framework in Frameworks */,
+				9405F75D1C53647500C39CD8 /* AVFoundation.framework in Frameworks */,
 				9405F7531C535DDD00C39CD8 /* libsqlite3.tbd in Frameworks */,
 				9405F7511C535DD400C39CD8 /* libz.tbd in Frameworks */,
 				9405F74F1C535DCB00C39CD8 /* SystemConfiguration.framework in Frameworks */,
@@ -93,7 +108,6 @@
 				9405F7491C535DB100C39CD8 /* QuartzCore.framework in Frameworks */,
 				9405F7471C535DA700C39CD8 /* CoreGraphics.framework in Frameworks */,
 				9405F7451C535DA000C39CD8 /* CFNetwork.framework in Frameworks */,
-				9405F7431C535D9A00C39CD8 /* AudioToolbox.framework in Frameworks */,
 				9405F7411C535D6D00C39CD8 /* Parse.framework in Frameworks */,
 				9405F7401C535D6D00C39CD8 /* Bolts.framework in Frameworks */,
 			);
@@ -142,9 +156,7 @@
 			children = (
 				9405F70E1C535D3000C39CD8 /* AppDelegate.h */,
 				9405F70F1C535D3000C39CD8 /* AppDelegate.m */,
-				9405F7551C535E1F00C39CD8 /* Constants.h */,
-				9405F7561C535E1F00C39CD8 /* Constants.m */,
-				9405F7581C535EBA00C39CD8 /* Constants.plist */,
+				9405F76A1C5368DE00C39CD8 /* Constants */,
 				9405F7111C535D3000C39CD8 /* ViewController.h */,
 				9405F7121C535D3000C39CD8 /* ViewController.m */,
 				9405F7141C535D3000C39CD8 /* Main.storyboard */,
@@ -185,6 +197,11 @@
 		9405F7541C535E0300C39CD8 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9405F7661C53685B00C39CD8 /* HoundSDK */,
+				9405F7681C5368AA00C39CD8 /* libHoundSDK.a */,
+				9405F7601C5364B300C39CD8 /* libc++.tbd */,
+				9405F75E1C53648500C39CD8 /* Accelerate.framework */,
+				9405F75C1C53647500C39CD8 /* AVFoundation.framework */,
 				9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */,
 				9405F7501C535DD400C39CD8 /* libz.tbd */,
 				9405F74E1C535DCB00C39CD8 /* SystemConfiguration.framework */,
@@ -198,6 +215,16 @@
 				9405F73F1C535D6D00C39CD8 /* Parse.framework */,
 			);
 			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		9405F76A1C5368DE00C39CD8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9405F7551C535E1F00C39CD8 /* Constants.h */,
+				9405F7561C535E1F00C39CD8 /* Constants.m */,
+				9405F7581C535EBA00C39CD8 /* Constants.plist */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9405F7671C53685B00C39CD8 /* HoundSDK in Resources */,
 				9405F71B1C535D3000C39CD8 /* LaunchScreen.storyboard in Resources */,
 				9405F7181C535D3000C39CD8 /* Assets.xcassets in Resources */,
 				9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */,
@@ -479,8 +507,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = "HoundSDK/include/**";
 				INFOPLIST_FILE = "Siri 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HoundSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -494,8 +527,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = "HoundSDK/include/**";
 				INFOPLIST_FILE = "Siri 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HoundSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -568,6 +606,7 @@
 				9405F7371C535D3000C39CD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9405F7381C535D3000C39CD8 /* Build configuration list for PBXNativeTarget "Siri 2.0Tests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +615,7 @@
 				9405F73A1C535D3000C39CD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9405F73B1C535D3000C39CD8 /* Build configuration list for PBXNativeTarget "Siri 2.0UITests" */ = {
 			isa = XCConfigurationList;
@@ -584,6 +624,7 @@
 				9405F73D1C535D3000C39CD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

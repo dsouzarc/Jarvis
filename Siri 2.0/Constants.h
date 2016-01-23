@@ -13,4 +13,8 @@
 + (NSString*) getParseAppId;
 + (NSString*) getParseClientId;
 
++ (NSString*) getHoundifyClientKey;
++ (NSString*) getHoundifyClientId;
+
+
 @end

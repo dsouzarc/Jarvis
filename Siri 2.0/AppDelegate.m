@@ -21,7 +21,10 @@
     
     [Parse setApplicationId:[Constants getParseAppId]
                   clientKey:[Constants getParseClientId]];
-
+    
+    [Hound setClientID:[Constants getHoundifyClientId]];
+    [Hound setClientKey:[Constants getHoundifyClientKey]];
+    
     return YES;
 }
 

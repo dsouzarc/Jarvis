@@ -10,6 +10,8 @@
 
 #import <Parse/Parse.h>
 
+#import <HoundSDK/HoundSDK.h>
+
 #import "Constants.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
