@@ -8,9 +8,28 @@
 
 #import "HoundHandler.h"
 
+static HoundHandler *houndHandler;
+
 @implementation HoundHandler
 
-+ (void) handleHoundResponse:(NSDictionary *)response nativeData:(NSDictionary *)nativeData
++ (instancetype) getInstance
+{
+    @synchronized(self) {
+        if(!houndHandler) {
+            houndHandler = [[self alloc] init];
+        }
+    }
+    
+    return houndHandler;
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    return self;
+}
+
+- (void) handleHoundResponse:(NSDictionary *)response nativeData:(NSDictionary *)nativeData
 {
     if(nativeData) {
         NSLog(@"NATIVE DATA%@", nativeData);
@@ -24,9 +43,117 @@
     NSString *writtenResponse = allResults[@"WrittenResponse"];
     NSString *transcription = choiceData[@"Transcription"];
     
-    NSLog(@"CommandKind: %@", commandKind);
+    //No text
+    if(!transcription || transcription.length == 0) {
+        [self.delegate noResponse];
+        return;
+    }
+    
+    //Known functions - addition, times, etc. the simple stuff
+    if(![commandKind isEqualToString:@"NoResultCommand"]) {
+        [self.delegate commandNotSupported:commandKind transcription:transcription];
+    }
+    
+    transcription = [transcription lowercaseString];
+    
+    NSArray *eventIndicators = @[@"event", @"to do", @"thing", @"concert", @"reading", @"learn"];
+    for(NSString *eventIndicator in eventIndicators) {
+        if([transcription containsString:eventIndicator]) {
+            [self handleEvents:transcription];
+            return;
+        }
+    }
+    
+    NSArray *newsItemIndicators = @[@"restaurant", @"eat", @"place", @"to", @"food", @"fine", @"dining"];
+    for(NSString *newItemIndicator in newsItemIndicators) {
+        if([transcription containsString:newItemIndicator]) {
+            [self handleNewsItems:transcription];
+            return;
+        }
+    }
+    
+    [self.delegate notUnderstandableResponse];
+    
+    /*NSLog(@"CommandKind: %@", commandKind);
     NSLog(@"WrittenResponse: %@", writtenResponse);
-    NSLog(@"Transcription: %@", transcription);
+    NSLog(@"Transcription: %@", transcription);*/
+}
+
+- (void) handleNewsItems:(NSString*)transcription
+{
+    int distance = [self getNumberFromWords:transcription];
+    NSArray *words = [self getKeyWords:transcription];
+    
+    //No distance and too many words
+    if(distance <= 0 && words.count > MAX_KEY_WORDS) {
+        [self.delegate wantsNewsItemsNearThem];
+    }
+    else if(distance > 0 && words.count > MAX_KEY_WORDS) {
+        [self.delegate wantsNewsItemsNearThem:distance];
+    }
+    else if(distance > 0 && words.count <= MAX_KEY_WORDS) {
+        [self.delegate wantsNewsItemsNearThem:distance keyWords:words];
+    }
+    else if(distance <= 0 && words.count <= MAX_KEY_WORDS) {
+        [self.delegate wantsNewsItemsNearThemWithKeyWords:words];
+    }
+    else {
+        [self.delegate wantsNewsItemsNearThem];
+    }
+}
+
+- (void) handleEvents:(NSString*)transcription
+{
+    int distance = [self getNumberFromWords:transcription];
+    NSArray *words = [self getKeyWords:transcription];
+    
+    //No distance and too many words
+    if(distance <= 0 && words.count > MAX_KEY_WORDS) {
+        [self.delegate wantsEventsNearThem];
+    }
+    else if(distance > 0 && words.count > MAX_KEY_WORDS) {
+        [self.delegate wantsEventsNearThem:distance];
+    }
+    else if(distance > 0 && words.count <= MAX_KEY_WORDS) {
+        [self.delegate wantsEventsNearThem:distance keyWords:words];
+    }
+    else if(distance <= 0 && words.count <= MAX_KEY_WORDS) {
+        [self.delegate wantsEventsNearThemWithKeyWords:words];
+    }
+    else {
+        [self.delegate wantsEventsNearThem];
+    }
+}
+
+- (NSArray*) getKeyWords:(NSString*)transcription
+{
+    NSArray *wordsToRemove = @[@"i", @"you", @"me", @"us", @"they", @"he", @"him", @"her", @"their", @"she", @"it", @"them", @"the", @"for", @"why", @"in", @"to", @"we", @"and", @"but", @"with"];
+    NSMutableArray *words = [NSMutableArray arrayWithArray:[transcription componentsSeparatedByString:@" "]];
+    [words removeObjectsInArray:wordsToRemove];
+    return words;
+}
+
+- (int) getNumberFromWords:(NSString*)text
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    
+    //Start off with the big numbers, relatively large.
+    for(int i = 100; i >= 0; i--) {
+        NSString *number = [[numberFormatter stringFromNumber:@(i)] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        
+        //Number contains (ie. one hundred and one)
+        if([number containsString:text]) {
+            
+            //Same length ie. one and one
+            if([text rangeOfString:number].length == number.length) {
+                return i;
+            }
+        }
+    }
+
+    //Not found
+    return -1;
 }
 
 @end

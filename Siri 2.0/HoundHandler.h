@@ -13,8 +13,32 @@
 #import "Constants.h"
 #import "ParseCommunicator.h"
 
+@class HoundHandler;
+
+@protocol HoundHandlerDelegate <NSObject>
+
+- (void) noResponse;
+- (void) notUnderstandableResponse;
+- (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription;
+
+- (void) wantsEventsNearThem;
+- (void) wantsEventsNearThem:(int)radius;
+- (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords;
+- (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords;
+
+- (void) wantsNewsItemsNearThem;
+- (void) wantsNewsItemsNearThem:(int)radius;
+- (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords;
+- (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords;
+
+@end
+
 @interface HoundHandler : NSObject
 
-+ (void) handleHoundResponse:(NSDictionary*)response nativeData:(NSDictionary*)nativeData;
+@property (weak, nonatomic) id<HoundHandlerDelegate> delegate;
+
++ (instancetype) getInstance;
+
+- (void) handleHoundResponse:(NSDictionary*)response nativeData:(NSDictionary*)nativeData;
 
 @end
