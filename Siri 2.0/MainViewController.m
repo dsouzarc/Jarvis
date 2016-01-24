@@ -18,9 +18,6 @@
 
 @property (strong, nonatomic) HoundHandler *houndHandler;
 
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) MapViewController *mapViewController;
-
 @property BOOL microphoneIsRecognizing;
 
 @end
@@ -44,37 +41,9 @@
         self.microphoneIsRecognizing = NO;
         self.houndHandler = [HoundHandler getInstance];
         self.houndHandler.delegate = self;
-        self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
     }
     
     return self;
-}
-
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    
-    if(viewController == self) {
-        return self.mapViewController;
-    }
-    else if(viewController == self.mapViewController) {
-        return self;
-    }
-    
-    return nil;
-    
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
-    if(viewController == self) {
-        return self.mapViewController;
-    }
-    else if(viewController == self.mapViewController) {
-        return self;
-    }
-    
-    return nil;
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -112,19 +81,6 @@
             }
         });
     }];
-    
-    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    self.pageViewController.dataSource = self;
-    self.pageViewController.delegate = self;
-    [[self.pageViewController view] setFrame:[[self view] bounds]];
-    NSArray *viewControllers = [NSArray arrayWithObject:self];
-    
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    //[self addChildViewController:self.pageViewController];
-    //[[self view] addSubview:[self.pageViewController view]];
-    //[self.pageViewController didMoveToParentViewController:self];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -178,17 +134,16 @@
                      animations:^{
                          [UIView setAnimationRepeatCount:INT_MAX];
                          self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-                          [self.view layoutIfNeeded];
                      }
                      completion:^(BOOL finished) {
                          self.houndifyMicrophoneButton.layer.shadowRadius = 0.0f;
                          self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-                         
-                         //self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
-                         //self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
+                         self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
+                         self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
                          NSLog(@"DECREASING: %@", NSStringFromCGRect(self.houndifyMicrophoneButton.frame));
                      }
      ];
+    
 }
 
 - (void) startSearch

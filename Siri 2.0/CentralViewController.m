@@ -37,12 +37,12 @@
     self.pageViewController = [[UIPageViewController alloc] init];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
-    self.pageViewController.view.frame = self.view.bounds;
+    self.pageViewController.view.frame = self.view.frame;
     
     [self.pageViewController setViewControllers:@[self.mainViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
-    [self.view addSubview:[self.pageViewController view]];
+    [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
 }
 

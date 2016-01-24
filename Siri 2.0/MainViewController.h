@@ -16,6 +16,6 @@
 
 #import "MapViewController.h"
 
-@interface MainViewController : UIViewController <HoundHandlerDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface MainViewController : UIViewController <HoundHandlerDelegate>
 
 @end
