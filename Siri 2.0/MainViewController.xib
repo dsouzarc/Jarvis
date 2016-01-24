@@ -28,7 +28,8 @@
                     <color key="backgroundColor" red="0.30658946269246268" green="0.4733862885850787" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="ic-wht-toolbar-houndify-mic"/>
                     <connections>
-                        <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="mmi-7f-8ao"/>
+                        <action selector="microphoneButtonHeldDown:" destination="-1" eventType="touchDown" id="YGj-W3-Hn8"/>
+                        <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="BUg-lq-CaN"/>
                     </connections>
                 </button>
             </subviews>

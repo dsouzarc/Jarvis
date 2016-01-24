@@ -22,6 +22,15 @@
 
 @implementation MainViewController
 
+
+/****************************************************************
+ *
+ *              Constructor + Inherited Methods
+ *
+*****************************************************************/
+
+# pragma mark Constructor + Inherited Methods
+
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,40 +40,6 @@
     }
     
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.audioVisualBezierPath = [UIBezierPath bezierPath];
-    self.audioVisualShapeLayer = [CAShapeLayer layer];
-    [self.view.layer addSublayer:self.audioVisualShapeLayer];
-    
-    [[HoundVoiceSearch instance] enableSpeech];
-    [[HoundVoiceSearch instance] enableHotPhraseDetection];
-    [[HoundVoiceSearch instance] enableEndOfSpeechDetection];
-    
-    [self.houndifyMicrophoneButton addTarget:self action:@selector(microphoneButtonHeldDown:) forControlEvents:UIControlEventTouchDown];
-    
-    self.houndifyMicrophoneButton.clipsToBounds = YES;
-    self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
-    
-    [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                NSLog(@"ERROR IN VIEW DID LOAD: %@", error.localizedDescription);
-            }
-        });
-    }];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        NSMutableArray *results = [ParseCommunicator getEventsNearMeWithKeyWord:@"iPhone"];
-        
-        for(NSObject *result in results) {
-            NSLog(@"Result: %@", result);
-        }
-        NSLog(@"%@", [[Constants getInstance] getGeoPoint]);
-    });
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -79,6 +54,29 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(hotPhrase) name:HoundVoiceSearchHotPhraseNotification object:nil];
     
     [self updateState];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.audioVisualBezierPath = [UIBezierPath bezierPath];
+    self.audioVisualShapeLayer = [CAShapeLayer layer];
+    [self.view.layer addSublayer:self.audioVisualShapeLayer];
+
+    self.houndifyMicrophoneButton.clipsToBounds = YES;
+    self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
+    
+    [[HoundVoiceSearch instance] enableSpeech];
+    [[HoundVoiceSearch instance] enableHotPhraseDetection];
+    [[HoundVoiceSearch instance] enableEndOfSpeechDetection];
+    
+    [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"ERROR IN VIEW DID LOAD: %@", error.localizedDescription);
+            }
+        });
+    }];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -195,10 +193,9 @@
                                                           NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
                                                       }
                                                       else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
-                                                          //NSLog(@"HERE: %@", dictionary);
+                                                          NSLog(@"HERE: %@", dictionary);
                                                           HoundDataHoundServer* houndServer = response;
-                                                          
-                                                          
+
                                                           HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
                                                           NSLog(@"%@", commandResult);
                                                           
@@ -217,11 +214,12 @@
 {
     switch (HoundVoiceSearch.instance.state) {
         case HoundVoiceSearchStateNone:
-            NSLog(@"NOT READY");
+            NSLog(@"NOT RECORDING");
             self.microphoneIsRecognizing = NO;
             break;
             
         case HoundVoiceSearchStateReady:
+            NSLog(@"READY TO RECORD");
             self.microphoneIsRecognizing = NO;
             break;
             
@@ -236,7 +234,7 @@
             break;
             
         case HoundVoiceSearchStateSpeaking:
-            NSLog(@"MORE THINGS");
+            NSLog(@"ITS SPEAKING TO ME");
             self.microphoneIsRecognizing = NO;
             break;
     }
@@ -247,7 +245,6 @@
     // Display current audio level
     
     //Between 0 and 1
-    
     float audioLevel = [notification.object floatValue];
     
     [self.audioVisualShapeLayer removeFromSuperlayer];
@@ -268,12 +265,6 @@
     }
     
     [self.view.layer addSublayer:self.audioVisualShapeLayer];
-}
-
-- (void)hotPhrase
-{
-    [self startSearch];
-    NSLog(@"OK HOUND DETECTED");
 }
 
 - (void) switchHoundVoiceState
@@ -300,6 +291,15 @@
     }
 }
 
+
+/****************************************************************
+ *
+ *               Listeners
+ *
+*****************************************************************/
+
+# pragma mark Listeners
+
 - (IBAction)microphoneButtonHeldDown:(id)sender
 {
     NSLog(@"HOLD DOWN");
@@ -309,6 +309,12 @@
 {
     NSLog(@"CLICKKK");
     [self switchHoundVoiceState];
+}
+
+- (void)hotPhrase
+{
+    [self startSearch];
+    NSLog(@"OK HOUND DETECTED");
 }
 
 @end

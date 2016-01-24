@@ -11,6 +11,7 @@
 @interface AppDelegate ()
 
 @property (strong, nonatomic) MainViewController *mainViewController;
+@property (strong, nonatomic) Constants *constants;
 
 @end
 
@@ -28,7 +29,9 @@
     [Hound setClientKey:[Constants getHoundifyClientKey]];
     
     CLLocationManager* myLocationManager = [[CLLocationManager alloc] init];
-    //[myLocationManager requestAlwaysAuthorization];
+    [myLocationManager requestAlwaysAuthorization];
+    
+    self.constants = [Constants getInstance];
     
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         if(!granted) {
