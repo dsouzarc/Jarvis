@@ -10,8 +10,9 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) MainViewController *mainViewController;
 @property (strong, nonatomic) Constants *constants;
+
+@property (strong, nonatomic) CentralViewController *centralViewController;
 
 @end
 
@@ -40,8 +41,8 @@
             [alertView show];
         }
         else {
-            self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
-            self.window.rootViewController = self.mainViewController;
+            self.centralViewController = [[CentralViewController alloc] initWithNibName:@"CentralViewController" bundle:[NSBundle mainBundle]];
+            self.window.rootViewController = self.centralViewController;
         }
     }];
     return YES;

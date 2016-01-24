@@ -18,6 +18,9 @@
 
 @property (strong, nonatomic) HoundHandler *houndHandler;
 
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) MapViewController *mapViewController;
+
 @property BOOL microphoneIsRecognizing;
 
 @end
@@ -41,9 +44,37 @@
         self.microphoneIsRecognizing = NO;
         self.houndHandler = [HoundHandler getInstance];
         self.houndHandler.delegate = self;
+        self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
     }
     
     return self;
+}
+
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    if(viewController == self) {
+        return self.mapViewController;
+    }
+    else if(viewController == self.mapViewController) {
+        return self;
+    }
+    
+    return nil;
+    
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    if(viewController == self) {
+        return self.mapViewController;
+    }
+    else if(viewController == self.mapViewController) {
+        return self;
+    }
+    
+    return nil;
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -81,6 +112,19 @@
             }
         });
     }];
+    
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
+    self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
+    [[self.pageViewController view] setFrame:[[self view] bounds]];
+    NSArray *viewControllers = [NSArray arrayWithObject:self];
+    
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    //[self addChildViewController:self.pageViewController];
+    //[[self view] addSubview:[self.pageViewController view]];
+    //[self.pageViewController didMoveToParentViewController:self];
 }
 
 - (void) viewDidAppear:(BOOL)animated

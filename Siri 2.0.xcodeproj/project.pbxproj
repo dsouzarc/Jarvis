@@ -47,6 +47,8 @@
 		9405F7861C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */; };
 		9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */; };
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
+		9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408C9691C54E91F00967DE7 /* CentralViewController.m */; };
+		9408C96C1C54E91F00967DE7 /* CentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9408C96A1C54E91F00967DE7 /* CentralViewController.xib */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
 		94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */; };
@@ -123,6 +125,9 @@
 		9405F77A1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic.png"; sourceTree = "<group>"; };
 		9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
 		9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
+		9408C9681C54E91F00967DE7 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
+		9408C9691C54E91F00967DE7 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
+		9408C96A1C54E91F00967DE7 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
 		94A335671C548F8100862C80 /* ParseCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseCommunicator.h; sourceTree = "<group>"; };
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
 		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
@@ -200,6 +205,9 @@
 		9405F70A1C535D3000C39CD8 /* Siri 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				9408C9681C54E91F00967DE7 /* CentralViewController.h */,
+				9408C9691C54E91F00967DE7 /* CentralViewController.m */,
+				9408C96A1C54E91F00967DE7 /* CentralViewController.xib */,
 				94FC02BB1C54CFAB00D2018D /* MapViewController */,
 				9405F7701C53D6C100C39CD8 /* Main View Controller */,
 				94A335701C54A9A700862C80 /* Hound Handler */,
@@ -484,6 +492,7 @@
 				9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */,
 				9405F77E1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png in Resources */,
 				9405F7841C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@2x.png in Resources */,
+				9408C96C1C54E91F00967DE7 /* CentralViewController.xib in Resources */,
 				9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */,
 				9405F7851C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png in Resources */,
 				9405F7831C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png in Resources */,
@@ -517,6 +526,7 @@
 				94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */,
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
 				94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */,
+				9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
 				94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */,

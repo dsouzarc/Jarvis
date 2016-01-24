@@ -14,7 +14,7 @@
 
 #import "Constants.h"
 
-#import "MainViewController.h"
+#import "CentralViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
