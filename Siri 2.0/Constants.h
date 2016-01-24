@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
 @interface Constants : NSObject
 
@@ -23,5 +24,6 @@
 
 - (double) getMyLongitude;
 - (double) getMyLatitude;
+- (PFGeoPoint*) getGeoPoint;
 
 @end

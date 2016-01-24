@@ -41,6 +41,11 @@ static Constants *instance;
     return self;
 }
 
+- (PFGeoPoint*) getGeoPoint
+{
+    return [PFGeoPoint geoPointWithLocation:self.locationManager.location];
+}
+
 - (double) getMyLatitude
 {
     return self.locationManager.location.coordinate.latitude;
