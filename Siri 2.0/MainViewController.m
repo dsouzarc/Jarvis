@@ -190,11 +190,14 @@
                                                           NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
                                                       }
                                                       else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
+                                                          
                                                           HoundDataHoundServer *houndServer = response;
                                                           HoundDataCommandResult *commandResult = houndServer.allResults.firstObject;
                                                           NSDictionary *nativeData = commandResult[@"NativeData"];
                                                           [self.textView setText:[self.houndHandler getTranscription:dictionary]];
+                                                          NSLog(@"FINISHED HERE: %@", self.textView.text);
                                                           [self.houndHandler handleHoundResponse:dictionary nativeData:nativeData];
+                                                          NSLog(@"Signaled delegate");
                                                       }
                                                       else {
                                                           NSLog(@"WE GOT NOTHING: %@", response);

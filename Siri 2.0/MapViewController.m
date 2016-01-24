@@ -57,8 +57,9 @@
     
     self.annotations = [[NSMutableArray alloc] init];
     self.parseData = dataPoints;
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
     for(NSDictionary *pointToDisplay in dataPoints) {
-        NSLog(@"ADDING POINT: ");
+        NSLog(@"ADDING POINT: %@LL", pointToDisplay);
         PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
         
         PFGeoPoint *geoPoint = pointToDisplay[@"location_coordinates"];
@@ -71,6 +72,7 @@
         [self.mapView addAnnotation:annotation];
         [self.annotations addObject:annotation];
     }
+    });
 }
 
 - (void)viewDidLoad {
@@ -84,14 +86,27 @@
     MKCoordinateRegion region = MKCoordinateRegionMake([[Constants getInstance] getMyLocation].coordinate, span);
     self.mapView.region = region;
     
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
         
-        NSMutableArray *pointsToDisplay = [ParseCommunicator getNewsItemsNearMe];
+        NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe];
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-
+            for(NSDictionary *pointToDisplay in dataPoints) {
+                NSLog(@"ADDING POINT: %@", pointToDisplay);
+                PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
+                
+                PFGeoPoint *geoPoint = pointToDisplay[@"location_coordinates"];
+                CGPoint point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+                annotation.coordinate = CLLocationCoordinate2DMake(point.x, point.y);
+                
+                annotation.title = pointToDisplay[@"title"];
+                annotation.subtitle = pointToDisplay[@"business_name"];
+                
+                [self.mapView addAnnotation:annotation];
+                [self.annotations addObject:annotation];
+            }
         });
-    });*/
+    });
     
     /*NSString *thePath = [[NSBundle mainBundle] pathForResource:@"EntranceToGoliathRoute" ofType:@"plist"];
     NSArray *pointsArray = [NSArray arrayWithContentsOfFile:thePath];

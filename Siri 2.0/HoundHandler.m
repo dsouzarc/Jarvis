@@ -95,7 +95,9 @@ static HoundHandler *houndHandler;
         }
     }
     
-    [self.delegate notUnderstandableResponse];
+    [self handleNewsItems:transcription];
+    
+    //[self.delegate notUnderstandableResponse];
     
     /*NSLog(@"CommandKind: %@", commandKind);
     NSLog(@"WrittenResponse: %@", writtenResponse);

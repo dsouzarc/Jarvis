@@ -95,17 +95,18 @@
 
 - (void) noResponse
 {
-    
+    NSLog(@"NO RESPONSE");
 }
 
 - (void) notUnderstandableResponse
 {
     
+    NSLog(@"NOT UNDERSTANDABLE");
 }
 
 - (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription
 {
-    
+    NSLog(@"NOT SUPPORTED");
 }
 
 //TODO: Pause main UI while (and after) we figure this out
