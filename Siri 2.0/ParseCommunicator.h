@@ -13,9 +13,19 @@
 
 @interface ParseCommunicator : NSObject
 
+#pragma mark Events
+
 + (NSMutableArray*) getEventsNearMe;
 + (NSMutableArray*) getEventsNearMe:(int)radius;
 + (NSMutableArray*) getEventsNearMeWithKeyWord:(NSString*)keyWord;
 + (NSMutableArray*) getEventsNearMe:(int)radius keyWord:(NSString*)keyWord;
+
+
+#pragma mark News Items
+
++ (NSMutableArray*) getNewsItemsNearMe;
++ (NSMutableArray*) getNewsItemsNearMe:(int)radius;
++ (NSMutableArray*) getNewsItemsNearMeWithKeyWord:(NSString*)keyWord;
++ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWord:(NSString*)keyWord;
 
 @end
