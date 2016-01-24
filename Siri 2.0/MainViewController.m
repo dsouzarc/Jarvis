@@ -70,20 +70,27 @@
     [super viewDidAppear:animated];
     
     //Translates from bottom to middle of screen
-    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^(void) {
-        self.houndifyMicrophoneButton.alpha = 1.0f;
-        [self.houndifyMicrophoneButton setFrame:CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * 2.0, self.houndifyMicrophoneButton.frame.size.height * 2.0)];
-        self.houndifyMicrophoneButton.center = self.view.center;
-    } completion:^(BOOL completed) {
-        //Translattes back down to appropriate location
-        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^(void) {
-            self.houndifyMicrophoneButton.alpha = 1.5f;
-            [self.houndifyMicrophoneButton setFrame:CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3))];
-            self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
-        } completion:^(BOOL completed) {
-            
-        }];
-    }];
+    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionTransitionNone
+                     animations:^(void) {
+                         self.houndifyMicrophoneButton.alpha = 1.0f;
+                         self.houndifyMicrophoneButton.frame = CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * 2.0, self.houndifyMicrophoneButton.frame.size.height * 2.0);
+                         self.houndifyMicrophoneButton.center = self.view.center;
+                     }
+                     completion:^(BOOL completed) {
+                         //Translattes back down to appropriate location
+                         [UIView animateWithDuration:0.4
+                                               delay:0.0
+                                             options:UIViewAnimationOptionTransitionNone
+                                          animations:^(void) {
+                                              self.houndifyMicrophoneButton.alpha = 1.5f;
+                                              self.houndifyMicrophoneButton.frame = CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
+                                              self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
+                                          }
+                                          completion:^(BOOL completed) {
+                                          }
+                          ];
+                     }
+     ];
     
     //All while spinning
     CABasicAnimation* rotationAnimation;
@@ -102,15 +109,17 @@
     self.houndifyMicrophoneButton.layer.shadowOpacity = 0.5f;
     self.houndifyMicrophoneButton.layer.masksToBounds = NO;
     
-    [UIView animateWithDuration:1.0f delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction  animations:^{
-        [UIView setAnimationRepeatCount:INT_MAX];
-        self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-        
-    } completion:^(BOOL finished) {
-        
-        self.houndifyMicrophoneButton.layer.shadowRadius = 0.0f;
-        self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-    }];
+    [UIView animateWithDuration:1.0f delay:0
+                        options:UIViewAnimationOptionAutoreverse | UIViewAnimationCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         [UIView setAnimationRepeatCount:INT_MAX];
+                         self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                     }
+                     completion:^(BOOL finished) {
+                         self.houndifyMicrophoneButton.layer.shadowRadius = 0.0f;
+                         self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                     }
+     ];
 }
 
 - (void) startSearch
@@ -197,29 +206,8 @@
 
 - (void)hotPhrase
 {
-    //[self startSearch];
+    [self startSearch];
     NSLog(@"OK HOUND DETECTED");
-}
-
-- (IBAction)listeningButtonTapped
-{
-    NSLog(@"TAPPED HERE");
-    
-    [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-
-            if (error) {
-                NSLog(@"ERROR: %@", error.localizedDescription);
-            }
-        });
-    }];
-    
-}
-
-- (IBAction)searchButtonTapped
-{
-    [self switchHoundVoiceState];
 }
 
 - (void) switchHoundVoiceState

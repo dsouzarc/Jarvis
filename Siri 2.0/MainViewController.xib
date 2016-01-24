@@ -32,13 +32,6 @@
                         <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="mmi-7f-8ao"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-Js-84P">
-                    <rect key="frame" x="7" y="282" width="48" height="30"/>
-                    <state key="normal" title="Search"/>
-                    <connections>
-                        <action selector="searchButtonTapped" destination="-1" eventType="touchUpInside" id="Bpj-4V-XBf"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
