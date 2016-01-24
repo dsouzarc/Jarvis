@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSDictionary *houndHandlerInformation;
 @property (strong, nonatomic) NSMutableArray *parseData;
+@property (strong, nonatomic) NSMutableArray *annotations;
 
 @end
 
@@ -29,6 +30,7 @@
     if(self) {
         self.houndHandlerInformation = houndHandlerInformation;
         self.parseData = setOfPoints;
+        self.annotations = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -40,8 +42,35 @@
     if(self) {
         self.houndHandlerInformation = [[NSDictionary alloc] init];
         self.parseData = [[NSMutableArray alloc] init];
+        self.annotations = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void) setDataPoints:(NSMutableArray *)dataPoints
+{
+    if(self.annotations.count > 0) {
+        for(PVAttractionAnnotation *annotation in self.annotations) {
+            [self.mapView removeAnnotation:annotation];
+        }
+    }
+    
+    self.annotations = [[NSMutableArray alloc] init];
+    self.parseData = dataPoints;
+    for(NSDictionary *pointToDisplay in dataPoints) {
+        NSLog(@"ADDING POINT: ");
+        PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
+        
+        PFGeoPoint *geoPoint = pointToDisplay[@"location_coordinates"];
+        CGPoint point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+        annotation.coordinate = CLLocationCoordinate2DMake(point.x, point.y);
+        
+        annotation.title = pointToDisplay[@"title"];
+        annotation.subtitle = pointToDisplay[@"business_name"];
+        
+        [self.mapView addAnnotation:annotation];
+        [self.annotations addObject:annotation];
+    }
 }
 
 - (void)viewDidLoad {
@@ -55,26 +84,14 @@
     MKCoordinateRegion region = MKCoordinateRegionMake([[Constants getInstance] getMyLocation].coordinate, span);
     self.mapView.region = region;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
         
         NSMutableArray *pointsToDisplay = [ParseCommunicator getNewsItemsNearMe];
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-            for(NSDictionary *pointToDisplay in pointsToDisplay) {
-                
-                PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
-                
-                PFGeoPoint *geoPoint = pointToDisplay[@"location_coordinates"];
-                CGPoint point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
-                annotation.coordinate = CLLocationCoordinate2DMake(point.x, point.y);
-                
-                annotation.title = pointToDisplay[@"title"];
-                annotation.subtitle = pointToDisplay[@"business_name"];
-                
-                [self.mapView addAnnotation:annotation];
-            }
+
         });
-    });
+    });*/
     
     /*NSString *thePath = [[NSBundle mainBundle] pathForResource:@"EntranceToGoliathRoute" ofType:@"plist"];
     NSArray *pointsArray = [NSArray arrayWithContentsOfFile:thePath];

@@ -28,5 +28,7 @@
 
 @property (weak, nonatomic) id<MapViewControllerDelegate> delegate;
 
+- (void) setDataPoints:(NSMutableArray*)dataPoints;
+
 
 @end

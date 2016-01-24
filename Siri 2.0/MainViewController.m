@@ -40,7 +40,6 @@
     if(self) {
         self.microphoneIsRecognizing = NO;
         self.houndHandler = [HoundHandler getInstance];
-        self.houndHandler.delegate = self;
     }
     
     return self;
@@ -181,6 +180,7 @@
                                                                                   floatingLabel.alpha = 0.65;
                                                                               }
                                                                               completion:^(BOOL finished) {
+                                                                                  [self.textView setText:floatingLabel.text];
                                                                                   [floatingLabel removeFromSuperview];
                                                                                   
                                                                                   //Change the TextView?
@@ -193,6 +193,7 @@
                                                           HoundDataHoundServer *houndServer = response;
                                                           HoundDataCommandResult *commandResult = houndServer.allResults.firstObject;
                                                           NSDictionary *nativeData = commandResult[@"NativeData"];
+                                                          [self.textView setText:[self.houndHandler getTranscription:dictionary]];
                                                           [self.houndHandler handleHoundResponse:dictionary nativeData:nativeData];
                                                       }
                                                       else {
@@ -247,6 +248,7 @@
     [self.audioVisualBezierPath moveToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y)];
     [self.audioVisualBezierPath addLineToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y - 300 * audioLevel)];
     self.audioVisualShapeLayer.path  = [self.audioVisualBezierPath CGPath];
+    self.audioVisualShapeLayer.lineWidth = 3.0f;
     
     if(self.microphoneIsRecognizing) {
         self.audioVisualShapeLayer.strokeColor = [[UIColor greenColor] CGColor];
@@ -282,72 +284,6 @@
             [HoundVoiceSearch.instance stopSpeaking];
             break;
     }
-}
-
-
-/****************************************************************
- *
- *              HoundHandler Delegate
- *
- *****************************************************************/
-
-# pragma mark HoundHandler Delegate
-
-- (void) noResponse
-{
-    
-}
-
-- (void) notUnderstandableResponse
-{
-    
-}
-
-- (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription
-{
-    
-}
-
-//TODO: Pause main UI while (and after) we figure this out
-
-- (void) wantsEventsNearThem
-{
-    NSLog(@"Wants event near them");
-}
-
-- (void) wantsEventsNearThem:(int)radius
-{
-    NSLog(@"Wants event near them: %d", radius);
-}
-
-- (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
-{
-    NSLog(@"Wants event near them: %@", keyWords);
-}
-
-- (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords
-{
-    NSLog(@"Wants event near them: %d\t%@", radius, keyWords);
-}
-
-- (void) wantsNewsItemsNearThem
-{
-    NSLog(@"Wants News Items near them");
-}
-
-- (void) wantsNewsItemsNearThem:(int)radius
-{
-    NSLog(@"Wants News Items near them: %d", radius);
-}
-
-- (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords
-{
-    NSLog(@"Wants News Items near them: %@", keyWords);
-}
-
-- (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords
-{
-    NSLog(@"Wants News Items near them: %d\t%@", radius, keyWords);
 }
 
 

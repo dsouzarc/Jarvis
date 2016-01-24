@@ -29,6 +29,20 @@ static HoundHandler *houndHandler;
     return self;
 }
 
+- (NSString*) getTranscription:(NSDictionary*)response
+{
+    
+    NSDictionary *allResults = [response[@"AllResults"] firstObject];
+    NSDictionary *disambiguation = response[@"Disambiguation"];
+    NSDictionary *choiceData = [disambiguation[@"ChoiceData"] firstObject];
+    
+    NSString *commandKind = allResults[@"CommandKind"];
+    NSString *writtenResponse = allResults[@"WrittenResponse"];
+    NSString *transcription = choiceData[@"Transcription"];
+    
+    return transcription;
+}
+
 - (void) handleHoundResponse:(NSDictionary *)response nativeData:(NSDictionary *)nativeData
 {
     if(nativeData) {
@@ -55,6 +69,15 @@ static HoundHandler *houndHandler;
     }
     
     transcription = [transcription lowercaseString];
+    
+    //Community service
+    NSArray *keyWords = @[@"happy", @"happiness", @"community", @"service", @"help", @"old", @"homeless", @"kind", @"caring", @"red", @"cross", @"act", @"of", @"kindness", @"soup", @"kitch", @"food", @"drive"];
+    for(NSString *keyWord in keyWords) {
+        if([transcription containsString:keyWord]) {
+            [self.delegate wantsCommunityService];
+            return;
+        }
+    }
     
     NSArray *eventIndicators = @[@"event", @"to do", @"thing", @"concert", @"reading", @"learn"];
     for(NSString *eventIndicator in eventIndicators) {

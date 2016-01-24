@@ -31,6 +31,8 @@
 - (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords;
 - (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords;
 
+- (void) wantsCommunityService;
+
 @end
 
 @interface HoundHandler : NSObject
@@ -40,5 +42,6 @@
 + (instancetype) getInstance;
 
 - (void) handleHoundResponse:(NSDictionary*)response nativeData:(NSDictionary*)nativeData;
+- (NSString*) getTranscription:(NSDictionary*)response;
 
 @end

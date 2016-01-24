@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
+@property (strong, nonatomic) HoundHandler *houndHandler;
+
 @end
 
 @implementation CentralViewController
@@ -27,6 +29,9 @@
         self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
         self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
         self.mapViewController.delegate = self;
+        
+        self.houndHandler = [HoundHandler getInstance];
+        self.houndHandler.delegate = self;
     }
     
     return self;
@@ -77,5 +82,105 @@
     [self.pageViewController setViewControllers:@[self.mainViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
 }
+
+
+
+/****************************************************************
+ *
+ *              HoundHandler Delegate
+ *
+ *****************************************************************/
+
+# pragma mark HoundHandler Delegate
+
+- (void) noResponse
+{
+    
+}
+
+- (void) notUnderstandableResponse
+{
+    
+}
+
+- (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription
+{
+    
+}
+
+//TODO: Pause main UI while (and after) we figure this out
+
+- (void) wantsEventsNearThem
+{
+    NSLog(@"Wants event near them");
+}
+
+- (void) wantsEventsNearThem:(int)radius
+{
+    NSLog(@"Wants event near them: %d", radius);
+    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
+{
+    NSLog(@"Wants event near them: %@", keyWords);
+    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords
+{
+    NSLog(@"Wants event near them: %d\t%@", radius, keyWords);
+    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius keyWords:keyWords];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsNewsItemsNearThem
+{
+    NSLog(@"Wants News Items near them");
+    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsNewsItemsNearThem:(int)radius
+{
+    NSLog(@"Wants News Items near them: %d", radius);
+    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords
+{
+    NSLog(@"Wants News Items near them: %@", keyWords);
+    NSMutableArray *dataPoints = [ParseCommunicator  getNewsItemsNearMeWithKeyWords:keyWords];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords
+{
+    NSLog(@"Wants News Items near them: %d\t%@", radius, keyWords);
+    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius keyWords:keyWords];
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void) wantsCommunityService
+{
+    NSLog(@"COMMUNITY SERVICES");
+    NSArray *keyWords = @[@"happy", @"happiness", @"community", @"service", @"help", @"old", @"homeless", @"kind", @"caring", @"red", @"cross", @"act", @"of", @"kindness", @"soup", @"kitch", @"food", @"drive"];
+    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
+    [dataPoints addObjectsFromArray:[ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords]];
+    NSLog(@"LEAVING HERE WITH: %ld", dataPoints.count);
+    [self.mapViewController setDataPoints:dataPoints];
+    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
 
 @end
