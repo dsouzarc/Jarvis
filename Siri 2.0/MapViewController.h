@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
+#import "PVAttractionAnnotation.h"
 #import "ParseCommunicator.h"
 #import "Constants.h"
 

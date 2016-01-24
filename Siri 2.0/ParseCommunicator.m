@@ -55,6 +55,25 @@ const int MAX_KEY_WORDS = 5;
     return results;
 }
 
++ (NSMutableArray*) removeDuplicates:(NSMutableArray*)original
+{
+    NSMutableDictionary *values = [[NSMutableDictionary alloc] init];
+    
+    for(int i = 0; i < original.count; i++) {
+        NSDictionary *item = original[i];
+        
+        //If the key returns the same value as the object, it's definitely a duplicate
+        if([[values objectForKey:item[@"pub_date"]] isEqualToValue:[item objectForKey:@"id"]]) {
+            [original removeObjectAtIndex:i];
+            i--;
+        }
+        else {
+            [values setObject:[item objectForKey:@"id"] forKey:[item objectForKey:@"pub_date"]];
+        }
+    }
+    return original;
+}
+
 + (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWords:(NSArray*)keyWords
 {
     static int skip = 0;

@@ -49,6 +49,7 @@
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
+		94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */; };
 		94FC02B51C54CF1200D2018D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC02B41C54CF1200D2018D /* MapKit.framework */; };
 		94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FC02B71C54CFA800D2018D /* MapViewController.m */; };
 		94FC02BA1C54CFA800D2018D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC02B81C54CFA800D2018D /* MapViewController.xib */; };
@@ -126,6 +127,8 @@
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
 		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
 		94A3356E1C54A9A300862C80 /* HoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoundHandler.m; sourceTree = "<group>"; };
+		94C2192D1C54D42C00C525DD /* PVAttractionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVAttractionAnnotation.h; sourceTree = "<group>"; };
+		94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVAttractionAnnotation.m; sourceTree = "<group>"; };
 		94FC02B41C54CF1200D2018D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		94FC02B61C54CFA800D2018D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		94FC02B71C54CFA800D2018D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -300,6 +303,15 @@
 			name = "Houndify Icons";
 			sourceTree = "<group>";
 		};
+		9437E2731C54DE84000680C3 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				94C2192D1C54D42C00C525DD /* PVAttractionAnnotation.h */,
+				94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */,
+			);
+			name = Annotation;
+			sourceTree = "<group>";
+		};
 		94A3356A1C54A67800862C80 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +357,7 @@
 				94FC02B61C54CFA800D2018D /* MapViewController.h */,
 				94FC02B71C54CFA800D2018D /* MapViewController.m */,
 				94FC02B81C54CFA800D2018D /* MapViewController.xib */,
+				9437E2731C54DE84000680C3 /* Annotation */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -506,6 +519,7 @@
 				94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
+				94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */,
 				9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */,
 				9405F7571C535E1F00C39CD8 /* Constants.m in Sources */,
 			);

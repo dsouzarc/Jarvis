@@ -13,8 +13,6 @@
 @property (strong, nonatomic) MainViewController *mainViewController;
 @property (strong, nonatomic) Constants *constants;
 
-@property (strong, nonatomic) MapViewController *mapViewController;
-
 @end
 
 @implementation AppDelegate
@@ -42,12 +40,8 @@
             [alertView show];
         }
         else {
-            //self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
-            //self.window.rootViewController = self.mainViewController;
-            
-            self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle] houndHandlerInformation:nil setOfPoints:nil];
-            self.window.rootViewController = self.mapViewController;
-            
+            self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+            self.window.rootViewController = self.mainViewController;
         }
     }];
     return YES;
