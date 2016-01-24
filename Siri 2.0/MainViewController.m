@@ -29,7 +29,7 @@
  *
  *              Constructor + Inherited Methods
  *
-*****************************************************************/
+ *****************************************************************/
 
 # pragma mark Constructor + Inherited Methods
 
@@ -66,7 +66,7 @@
     self.audioVisualBezierPath = [UIBezierPath bezierPath];
     self.audioVisualShapeLayer = [CAShapeLayer layer];
     [self.view.layer addSublayer:self.audioVisualShapeLayer];
-
+    
     self.houndifyMicrophoneButton.clipsToBounds = YES;
     self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
     
@@ -169,30 +169,24 @@
                                                           if(!oldPartialTranscript || ![oldPartialTranscript.partialTranscript isEqualToString:partialTranscript.partialTranscript]) {
                                                               oldPartialTranscript = partialTranscript;
                                                               
-                                                              UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-                                                              textLabel.center = self.view.center;
-                                                              [textLabel setText:partialTranscript.partialTranscript];
-                                                              [self.textView setText:partialTranscript.partialTranscript];
-                                                              //[self.view addSubview:textLabel];
+                                                              UILabel *floatingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                                                              floatingLabel.center = self.view.center;
+                                                              [floatingLabel setText:partialTranscript.partialTranscript];
+                                                              [self.view addSubview:floatingLabel];
                                                               [self.view layoutIfNeeded];
-                                                              /*[UIView transitionWithView:textLabel
-                                                                                duration:0.5f
-                                                                                 options:UIViewAnimationOptionCurveEaseOut
-                                                                              animations:^(void) {
-                                                                                  [textLabel setCenter:CGPointZero];
-                                                                              } 
-                                                                              completion:^(BOOL finished) {
-                                                                                  // Do nothing
-                                                                              }];
                                                               
-                                                              [UIView animateWithDuration:1.5 animations:^(void) {
-                                                                  textLabel.frame = CGRectMake(0, 0, 50, 50);
-                                                              } completion:^(BOOL completed) {
-                                                                  self.textView.text = [NSString stringWithFormat:@"%@\n%@", self.textView.text, textLabel.text];
-                                                                  //[textLabel setHidden:YES];
-                                                           
-                                                              }];*/
-                                                              }
+                                                              [UIView transitionWithView:floatingLabel duration:0.5f options:UIViewAnimationOptionCurveEaseOut
+                                                                              animations:^(void) {
+                                                                                  [floatingLabel setCenter:self.textView.center];
+                                                                                  floatingLabel.alpha = 0.65;
+                                                                              }
+                                                                              completion:^(BOOL finished) {
+                                                                                  [floatingLabel removeFromSuperview];
+                                                                                  
+                                                                                  //Change the TextView?
+                                                                              }
+                                                               ];
+                                                          }
                                                           NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
                                                       }
                                                       else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
@@ -249,7 +243,7 @@
     [self.audioVisualShapeLayer removeFromSuperlayer];
     self.audioVisualBezierPath = [UIBezierPath bezierPath];
     self.audioVisualShapeLayer = [CAShapeLayer layer];
-
+    
     [self.audioVisualBezierPath moveToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y)];
     [self.audioVisualBezierPath addLineToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y - 300 * audioLevel)];
     self.audioVisualShapeLayer.path  = [self.audioVisualBezierPath CGPath];
@@ -295,7 +289,7 @@
  *
  *              HoundHandler Delegate
  *
-*****************************************************************/
+ *****************************************************************/
 
 # pragma mark HoundHandler Delegate
 
@@ -361,7 +355,7 @@
  *
  *               Listeners
  *
-*****************************************************************/
+ *****************************************************************/
 
 # pragma mark Listeners
 

@@ -33,7 +33,6 @@
 		9405F7611C5364B300C39CD8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7601C5364B300C39CD8 /* libc++.tbd */; };
 		9405F7671C53685B00C39CD8 /* HoundSDK in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7661C53685B00C39CD8 /* HoundSDK */; };
 		9405F7691C5368AA00C39CD8 /* libHoundSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405F7681C5368AA00C39CD8 /* libHoundSDK.a */; };
-		9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9405F76C1C53D6BB00C39CD8 /* MainViewController.m */; };
 		9405F76F1C53D6BB00C39CD8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */; };
 		9405F77D1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */; };
 		9405F77E1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */; };
@@ -49,6 +48,7 @@
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
 		9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408C9691C54E91F00967DE7 /* CentralViewController.m */; };
 		9408C96C1C54E91F00967DE7 /* CentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9408C96A1C54E91F00967DE7 /* CentralViewController.xib */; };
+		941DFB001C550AEB0040B366 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFAFF1C550AEB0040B366 /* MainViewController.m */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
 		94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */; };
@@ -111,7 +111,6 @@
 		9405F7661C53685B00C39CD8 /* HoundSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HoundSDK; sourceTree = "<group>"; };
 		9405F7681C5368AA00C39CD8 /* libHoundSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHoundSDK.a; path = HoundSDK/libHoundSDK.a; sourceTree = "<group>"; };
 		9405F76B1C53D6BB00C39CD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		9405F76C1C53D6BB00C39CD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		9405F7711C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-tabbar-houndify-mic.png"; sourceTree = "<group>"; };
 		9405F7721C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-blk-tabbar-houndify-mic@2x.png"; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		9408C9681C54E91F00967DE7 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
 		9408C9691C54E91F00967DE7 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		9408C96A1C54E91F00967DE7 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
+		941DFAFF1C550AEB0040B366 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		94A335671C548F8100862C80 /* ParseCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseCommunicator.h; sourceTree = "<group>"; };
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
 		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				9405F76B1C53D6BB00C39CD8 /* MainViewController.h */,
-				9405F76C1C53D6BB00C39CD8 /* MainViewController.m */,
+				941DFAFF1C550AEB0040B366 /* MainViewController.m */,
 				9405F76D1C53D6BB00C39CD8 /* MainViewController.xib */,
 			);
 			name = "Main View Controller";
@@ -525,12 +525,12 @@
 				94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */,
 				94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */,
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
+				941DFB001C550AEB0040B366 /* MainViewController.m in Sources */,
 				94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */,
 				9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
 				94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */,
-				9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */,
 				9405F7571C535E1F00C39CD8 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

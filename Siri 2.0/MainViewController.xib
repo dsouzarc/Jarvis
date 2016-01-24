@@ -17,12 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Text you speak to Jarvis will show up here. He's capable of answering advanced questions." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PY8-ZB-qml">
-                    <rect key="frame" x="40" y="100" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-d6-grq">
                     <rect key="frame" x="120" y="432" width="80" height="80"/>
                     <color key="backgroundColor" red="0.30658946269246268" green="0.4733862885850787" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +26,12 @@
                         <action selector="microphoneButtonPressed:" destination="-1" eventType="touchUpInside" id="BUg-lq-CaN"/>
                     </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Text you speak to Jarvis will show up here. He's capable of answering advanced questions." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PY8-ZB-qml">
+                    <rect key="frame" x="8" y="32" width="304" height="102"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
