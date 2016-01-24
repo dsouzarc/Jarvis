@@ -10,6 +10,9 @@
 
 @interface MapViewController ()
 
+@property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
+
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) NSDictionary *houndHandlerInformation;
@@ -43,6 +46,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.houndifyMicrophoneButton.clipsToBounds = YES;
+    self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
     
     self.mapView.mapType = MKMapTypeHybrid;
     
@@ -88,7 +93,85 @@
     [self.mapView addOverlay:myPolyline];*/
 }
 
-#pragma mark - Add methods
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.houndifyMicrophoneButton.alpha = 0.0f;
+    self.houndifyMicrophoneButton.center = CGPointMake(-100.0, self.view.center.y);
+    
+    /*[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(updateState) name:HoundVoiceSearchStateChangeNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(audioLevel:) name:HoundVoiceSearchAudioLevelNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(hotPhrase) name:HoundVoiceSearchHotPhraseNotification object:nil];
+    
+    [self updateState];*/
+}
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //Translates from bottom to middle of screen
+    [UIView animateWithDuration:0.7
+                          delay:0.0
+                        options:UIViewAnimationOptionTransitionNone
+                     animations:^(void) {
+                         self.houndifyMicrophoneButton.alpha = 1.0f;
+                         self.houndifyMicrophoneButton.frame = CGRectMake(0, 0, self.houndifyMicrophoneButton.frame.size.width * 2.0, self.houndifyMicrophoneButton.frame.size.height * 2.0);
+                         self.houndifyMicrophoneButton.center = self.view.center;
+                     }
+                     completion:^(BOOL completed) {
+                         //Translattes back down to appropriate location
+                         [UIView animateWithDuration:0.4
+                                               delay:0.0
+                                             options:UIViewAnimationOptionTransitionNone
+                                          animations:^(void) {
+                                              self.houndifyMicrophoneButton.alpha = 1.5f;
+                                              self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
+                                              self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
+                                          }
+                                          completion:^(BOOL completed) {
+                                          }
+                          ];
+                     }
+     ];
+    
+    //All while spinning
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * 30 * 2.0 ];
+    rotationAnimation.duration = 1.1;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.timeOffset = 0.0;
+    rotationAnimation.repeatCount = 1.0;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [self.houndifyMicrophoneButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+    self.houndifyMicrophoneButton.layer.shadowRadius = 7.0f;
+    self.houndifyMicrophoneButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.houndifyMicrophoneButton.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.houndifyMicrophoneButton.layer.shadowOpacity = 0.5f;
+    self.houndifyMicrophoneButton.layer.masksToBounds = NO;
+    
+    [UIView animateWithDuration:1.0f delay:0
+                        options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction |UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAutoreverse
+                     animations:^{
+                         [UIView setAnimationRepeatCount:INT_MAX];
+                         self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                     }
+                     completion:^(BOOL finished) {
+                         self.houndifyMicrophoneButton.layer.shadowRadius = 0.0f;
+                         self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                         self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
+                         self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
+                         NSLog(@"DECREASING: %@", NSStringFromCGRect(self.houndifyMicrophoneButton.frame));
+                     }
+     ];
+    
+}
+
+- (IBAction)longPressMicrophone:(id)sender {
+    [self.delegate userWantsToReturnToMainViewController];
+}
 
 @end

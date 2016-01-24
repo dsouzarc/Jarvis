@@ -26,6 +26,7 @@
     if(self) {
         self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
         self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
+        self.mapViewController.delegate = self;
     }
     
     return self;
@@ -44,8 +45,8 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
 }
-
 
 - (UIViewController*) pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
@@ -69,6 +70,12 @@
     }
     
     return nil;
+}
+
+- (void) userWantsToReturnToMainViewController
+{
+    [self.pageViewController setViewControllers:@[self.mainViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
 }
 
 @end

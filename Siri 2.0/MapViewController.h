@@ -14,8 +14,19 @@
 #import "ParseCommunicator.h"
 #import "Constants.h"
 
+@class MapViewController;
+
+@protocol MapViewControllerDelegate <NSObject>
+
+- (void) userWantsToReturnToMainViewController;
+
+@end
+
 @interface MapViewController : UIViewController <MKOverlay, MKMapViewDelegate, MKAnnotation>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil houndHandlerInformation:(NSDictionary*)houndHandlerInformation setOfPoints:(NSMutableArray*)setOfPoints;
+
+@property (weak, nonatomic) id<MapViewControllerDelegate> delegate;
+
 
 @end

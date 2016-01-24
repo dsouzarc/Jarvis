@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
+                <outlet property="houndifyMicrophoneButton" destination="U7c-Mu-5pq" id="hPu-rd-6XX"/>
                 <outlet property="mapView" destination="Oit-zr-3PQ" id="IYF-xn-blP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,10 +23,22 @@
                         <outlet property="delegate" destination="-1" id="9i5-s3-EDA"/>
                     </connections>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7c-Mu-5pq">
+                    <rect key="frame" x="147" y="531" width="80" height="80"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="ic-wht-toolbar-houndify-mic"/>
+                    <connections>
+                        <action selector="longPressMicrophone:" destination="-1" eventType="touchDownRepeat" id="HTa-sP-K1m"/>
+                        <action selector="longPressMicrophone:" destination="-1" eventType="touchDown" id="SI4-G4-kHw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="565.5" y="165.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic-wht-toolbar-houndify-mic" width="19" height="29"/>
+    </resources>
 </document>
