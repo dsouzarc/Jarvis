@@ -11,21 +11,23 @@
 #import "Constants.h"
 #import <Parse/Parse.h>
 
+extern const int MAX_KEY_WORDS;
+
 @interface ParseCommunicator : NSObject
 
 #pragma mark Events
 
 + (NSMutableArray*) getEventsNearMe;
 + (NSMutableArray*) getEventsNearMe:(int)radius;
-+ (NSMutableArray*) getEventsNearMeWithKeyWord:(NSString*)keyWord;
-+ (NSMutableArray*) getEventsNearMe:(int)radius keyWord:(NSString*)keyWord;
++ (NSMutableArray*) getEventsNearMeWithKeyWords:(NSArray*)keyWords;
++ (NSMutableArray*) getEventsNearMe:(int)radius keyWords:(NSArray*)keyWords;
 
 
 #pragma mark News Items
 
 + (NSMutableArray*) getNewsItemsNearMe;
 + (NSMutableArray*) getNewsItemsNearMe:(int)radius;
-+ (NSMutableArray*) getNewsItemsNearMeWithKeyWord:(NSString*)keyWord;
-+ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWord:(NSString*)keyWord;
++ (NSMutableArray*) getNewsItemsNearMeWithKeyWords:(NSArray*)keyWords;
++ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWords:(NSArray*)keyWords;
 
 @end

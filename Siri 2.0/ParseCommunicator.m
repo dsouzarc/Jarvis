@@ -10,6 +10,7 @@
 
 static const int MAX_QUERY = 100;
 static const int MAX_RADIUS = 70;
+const int MAX_KEY_WORDS = 5;
 
 @implementation ParseCommunicator
 
@@ -22,19 +23,19 @@ static const int MAX_RADIUS = 70;
 
 # pragma mark NEWS ITEMS
 
-+ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWord:(NSString *)keyWord skip:(int)skip
++ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWords:(NSArray*)keyWords skip:(int)skip
 {
     PFQuery *query = [PFQuery queryWithClassName:@"NewsItems"];
     PFGeoPoint *currentLocation = [[Constants getInstance] getGeoPoint];
     NSMutableArray *queryArray = [[NSMutableArray alloc] init];
     
-    if(keyWord) {
+    if(keyWords) {
         //attributes
         NSArray *keysToSearch = @[@"excerpt", @"schema", @"business_name", @"location_name", @"title", @"comment", @"teacher_name"];
         
         for(NSString *key in keysToSearch) {
             PFQuery *fieldQuery = [PFQuery queryWithClassName:@"NewsItems"];
-            [fieldQuery whereKey:key containsString:keyWord];
+            [fieldQuery whereKey:key containedIn:keyWords];
             [fieldQuery whereKey:@"location_coordinates" nearGeoPoint:currentLocation withinMiles:radius];
             [queryArray addObject:fieldQuery];
         }
@@ -54,38 +55,39 @@ static const int MAX_RADIUS = 70;
     return results;
 }
 
-+ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWord:(NSString *)keyWord
++ (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWords:(NSArray*)keyWords
 {
     static int skip = 0;
-    static NSString *oldWord;
-    if(!oldWord) {
-        oldWord = keyWord;
+    static NSArray *oldWords;
+    if(!oldWords) {
+        oldWords = keyWords;
     }
     else {
-        if(![oldWord isEqualToString:keyWord]) {
+        if(![oldWords isEqualToArray:keyWords]) {
             skip = 0;
         }
     }
     
-    NSMutableArray *results = [self getNewsItemsNearMe:radius keyWord:keyWord skip:skip];
+    NSMutableArray *results = [self getNewsItemsNearMe:radius keyWords:keyWords skip:skip];
     skip += MAX_QUERY;
     return results;
 }
 
-+ (NSMutableArray*) getNewsItemsNearMeWithKeyWord:(NSString *)keyWord
++ (NSMutableArray*) getNewsItemsNearMeWithKeyWords:(NSArray*)keyWords
 {
     static int skip = 0;
-    static NSString *oldWord;
-    if(!oldWord) {
-        oldWord = keyWord;
+    static NSArray *oldWords;
+    if(!oldWords) {
+        oldWords = keyWords;
     }
     else {
-        if(![oldWord isEqualToString:keyWord]) {
+        if(![oldWords isEqualToArray:keyWords]) {
             skip = 0;
         }
     }
     
-    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWord:keyWord skip:skip];
+    
+    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWords:keyWords skip:skip];
     skip += MAX_QUERY;
     return results;
 }
@@ -93,7 +95,7 @@ static const int MAX_RADIUS = 70;
 + (NSMutableArray*) getNewsItemsNearMe:(int)radius
 {
     static int skip = 0;
-    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWord:nil skip:skip];
+    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWords:nil skip:skip];
     skip += MAX_QUERY;
     return results;
 }
@@ -101,7 +103,7 @@ static const int MAX_RADIUS = 70;
 + (NSMutableArray*) getNewsItemsNearMe
 {
     static int skip = 0;
-    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWord:nil skip:skip];
+    NSMutableArray *results = [self getNewsItemsNearMe:MAX_RADIUS keyWords:nil skip:skip];
     skip += MAX_QUERY;
     return results;
 }
@@ -115,19 +117,19 @@ static const int MAX_RADIUS = 70;
 
 # pragma mark EVENTS
 
-+ (NSMutableArray*) getEventsNearMe:(int)radius keyWord:(NSString *)keyWord skip:(int)skip
++ (NSMutableArray*) getEventsNearMe:(int)radius keyWords:(NSArray*)keyWords skip:(int)skip
 {
     PFQuery *query = [PFQuery queryWithClassName:@"EventItems"];
     PFGeoPoint *currentLocation = [[Constants getInstance] getGeoPoint];
     NSMutableArray *queryArray = [[NSMutableArray alloc] init];
     
-    if(keyWord) {
+    if(keyWords) {
         //attributes
         NSArray *keysToSearch = @[@"group_name", @"time", @"source_name", @"meeting_name", @"organizer", @"location_name", @"title", @"description", @"poster_name"];
         
         for(NSString *key in keysToSearch) {
             PFQuery *fieldQuery = [PFQuery queryWithClassName:@"EventItems"];
-            [fieldQuery whereKey:key containsString:keyWord];
+            [fieldQuery whereKey:key containedIn:keyWords];
             [fieldQuery whereKey:@"location_coordinates" nearGeoPoint:currentLocation withinMiles:radius];
             [queryArray addObject:fieldQuery];
         }
@@ -147,20 +149,20 @@ static const int MAX_RADIUS = 70;
     return results;
 }
 
-+ (NSMutableArray*) getEventsNearMe:(int)radius keyWord:(NSString *)keyWord
++ (NSMutableArray*) getEventsNearMe:(int)radius keyWords:(NSArray*)keyWords
 {
     static int skip = 0;
-    static NSString *oldWord;
-    if(!oldWord) {
-        oldWord = keyWord;
+    static NSArray *oldWords;
+    if(!oldWords) {
+        oldWords = keyWords;
     }
     else {
-        if(![oldWord isEqualToString:keyWord]) {
+        if(![oldWords isEqualToArray:keyWords]) {
             skip = 0;
         }
     }
     
-    NSMutableArray *results = [self getEventsNearMe:radius keyWord:keyWord skip:skip];
+    NSMutableArray *results = [self getEventsNearMe:radius keyWords:keyWords skip:skip];
     skip += MAX_QUERY;
     return results;
 }
@@ -168,7 +170,7 @@ static const int MAX_RADIUS = 70;
 + (NSMutableArray*) getEventsNearMe
 {
     static int skip = 0;
-    NSMutableArray *results = [self getEventsNearMe:MAX_RADIUS keyWord:nil skip:skip];
+    NSMutableArray *results = [self getEventsNearMe:MAX_RADIUS keyWords:nil skip:skip];
     skip += MAX_QUERY;
     return results;
 }
@@ -176,25 +178,25 @@ static const int MAX_RADIUS = 70;
 + (NSMutableArray*) getEventsNearMe:(int)radius
 {
     static int skip = 0;
-    NSMutableArray *results = [self getEventsNearMe:radius keyWord:nil skip:skip];
+    NSMutableArray *results = [self getEventsNearMe:radius keyWords:nil skip:skip];
     skip += MAX_QUERY;
     return results;
 }
 
-+ (NSMutableArray*) getEventsNearMeWithKeyWord:(NSString *)keyWord
++ (NSMutableArray*) getEventsNearMeWithKeyWords:(NSArray*)keyWords
 {
     static int skip = 0;
-    static NSString *oldWord;
-    if(!oldWord) {
-        oldWord = keyWord;
+    static NSArray *oldWords;
+    if(!oldWords) {
+        oldWords = keyWords;
     }
     else {
-        if(![oldWord isEqualToString:keyWord]) {
+        if(![oldWords isEqualToArray:keyWords]) {
             skip = 0;
         }
     }
     
-    NSMutableArray *results = [self getEventsNearMe:MAX_RADIUS keyWord:keyWord skip:skip];
+    NSMutableArray *results = [self getEventsNearMe:MAX_RADIUS keyWords:keyWords skip:skip];
     skip += MAX_QUERY;
     return results;
 }
