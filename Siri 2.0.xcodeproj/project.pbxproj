@@ -49,6 +49,11 @@
 		9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408C9691C54E91F00967DE7 /* CentralViewController.m */; };
 		9408C96C1C54E91F00967DE7 /* CentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9408C96A1C54E91F00967DE7 /* CentralViewController.xib */; };
 		941DFB001C550AEB0040B366 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFAFF1C550AEB0040B366 /* MainViewController.m */; };
+		941DFB0B1C552AC60040B366 /* PQFBarsInCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFB021C552AC60040B366 /* PQFBarsInCircle.m */; };
+		941DFB0C1C552AC60040B366 /* PQFBouncingBalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFB041C552AC60040B366 /* PQFBouncingBalls.m */; };
+		941DFB0D1C552AC60040B366 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFB061C552AC60040B366 /* PQFCirclesInTriangle.m */; };
+		941DFB0E1C552AC60040B366 /* UIColor+FlatColors in Resources */ = {isa = PBXBuildFile; fileRef = 941DFB081C552AC60040B366 /* UIColor+FlatColors */; };
+		941DFB0F1C552AC60040B366 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DFB0A1C552AC60040B366 /* UIColor+FlatColors.m */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
 		94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */; };
@@ -128,6 +133,16 @@
 		9408C9691C54E91F00967DE7 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		9408C96A1C54E91F00967DE7 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
 		941DFAFF1C550AEB0040B366 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		941DFB011C552AC60040B366 /* PQFBarsInCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBarsInCircle.h; sourceTree = "<group>"; };
+		941DFB021C552AC60040B366 /* PQFBarsInCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBarsInCircle.m; sourceTree = "<group>"; };
+		941DFB031C552AC60040B366 /* PQFBouncingBalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBouncingBalls.h; sourceTree = "<group>"; };
+		941DFB041C552AC60040B366 /* PQFBouncingBalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBouncingBalls.m; sourceTree = "<group>"; };
+		941DFB051C552AC60040B366 /* PQFCirclesInTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCirclesInTriangle.h; sourceTree = "<group>"; };
+		941DFB061C552AC60040B366 /* PQFCirclesInTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFCirclesInTriangle.m; sourceTree = "<group>"; };
+		941DFB071C552AC60040B366 /* PQFCustomLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCustomLoaders.h; sourceTree = "<group>"; };
+		941DFB081C552AC60040B366 /* UIColor+FlatColors */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UIColor+FlatColors"; sourceTree = "<group>"; };
+		941DFB091C552AC60040B366 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		941DFB0A1C552AC60040B366 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
 		94A335671C548F8100862C80 /* ParseCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseCommunicator.h; sourceTree = "<group>"; };
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
 		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
@@ -205,6 +220,7 @@
 		9405F70A1C535D3000C39CD8 /* Siri 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				941DFB101C552AD00040B366 /* PQF Loaders */,
 				9408C9681C54E91F00967DE7 /* CentralViewController.h */,
 				9408C9691C54E91F00967DE7 /* CentralViewController.m */,
 				9408C96A1C54E91F00967DE7 /* CentralViewController.xib */,
@@ -309,6 +325,23 @@
 				9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */,
 			);
 			name = "Houndify Icons";
+			sourceTree = "<group>";
+		};
+		941DFB101C552AD00040B366 /* PQF Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				941DFB011C552AC60040B366 /* PQFBarsInCircle.h */,
+				941DFB021C552AC60040B366 /* PQFBarsInCircle.m */,
+				941DFB031C552AC60040B366 /* PQFBouncingBalls.h */,
+				941DFB041C552AC60040B366 /* PQFBouncingBalls.m */,
+				941DFB051C552AC60040B366 /* PQFCirclesInTriangle.h */,
+				941DFB061C552AC60040B366 /* PQFCirclesInTriangle.m */,
+				941DFB071C552AC60040B366 /* PQFCustomLoaders.h */,
+				941DFB081C552AC60040B366 /* UIColor+FlatColors */,
+				941DFB091C552AC60040B366 /* UIColor+FlatColors.h */,
+				941DFB0A1C552AC60040B366 /* UIColor+FlatColors.m */,
+			);
+			name = "PQF Loaders";
 			sourceTree = "<group>";
 		};
 		9437E2731C54DE84000680C3 /* Annotation */ = {
@@ -497,6 +530,7 @@
 				9405F7851C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic@3x.png in Resources */,
 				9405F7831C53E4E300C39CD8 /* ic-wht-tabbar-houndify-mic.png in Resources */,
 				9405F77F1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic@3x.png in Resources */,
+				941DFB0E1C552AC60040B366 /* UIColor+FlatColors in Resources */,
 				9405F77D1C53E4E300C39CD8 /* ic-blk-tabbar-houndify-mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,8 +564,12 @@
 				9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
+				941DFB0B1C552AC60040B366 /* PQFBarsInCircle.m in Sources */,
 				94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */,
+				941DFB0F1C552AC60040B366 /* UIColor+FlatColors.m in Sources */,
 				9405F7571C535E1F00C39CD8 /* Constants.m in Sources */,
+				941DFB0D1C552AC60040B366 /* PQFCirclesInTriangle.m in Sources */,
+				941DFB0C1C552AC60040B366 /* PQFBouncingBalls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

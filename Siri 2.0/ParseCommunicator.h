@@ -30,4 +30,9 @@ extern const int MAX_KEY_WORDS;
 + (NSMutableArray*) getNewsItemsNearMeWithKeyWords:(NSArray*)keyWords;
 + (NSMutableArray*) getNewsItemsNearMe:(int)radius keyWords:(NSArray*)keyWords;
 
++ (NSMutableArray*) getKindness;
++ (NSMutableArray*) getImprovement;
++ (NSMutableArray*) getFamily;
++ (NSMutableArray*) getHousing;
+
 @end

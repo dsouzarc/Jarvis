@@ -220,4 +220,43 @@ const int MAX_KEY_WORDS = 5;
     return results;
 }
 
++ (NSMutableArray*) getArrayForSchema:(NSString*)schema
+{
+    static NSString *url = @"https://api.everyblock.com/content/philly/topnews?token=fd5f0d8fc74fd048fbb811ee29215be5fef04274&schema=";
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, schema]]];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+        return nil;
+    }
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:oResponseData options: NSJSONReadingMutableContainers error:&error];
+    
+    return JSON[@"results"];
+}
+
++ (NSMutableArray*) getKindness
+{
+    return [self getArrayForSchema:@"kindness"];
+}
+
++ (NSMutableArray*) getImprovement
+{
+    return [self getArrayForSchema:@"improvement"];
+}
++ (NSMutableArray*) getFamily
+{
+    return [self getArrayForSchema:@"family"];
+}
++ (NSMutableArray*) getHousing
+{
+    return [self getArrayForSchema:@"housing"];
+}
 @end

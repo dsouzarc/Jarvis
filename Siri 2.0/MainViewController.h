@@ -13,9 +13,12 @@
 #import "Constants.h"
 #import "ParseCommunicator.h"
 #import "HoundHandler.h"
-
+#import "PQFBouncingBalls.h"
 #import "MapViewController.h"
 
 @interface MainViewController : UIViewController <HoundHandlerDelegate>
+
+- (void) showLoadingAnimation;
+- (void) hideLoadingAnimation;
 
 @end

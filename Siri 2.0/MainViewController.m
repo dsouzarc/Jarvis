@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) UIBezierPath *audioVisualBezierPath;
 @property (strong, nonatomic) CAShapeLayer *audioVisualShapeLayer;
+@property (strong, nonatomic) PQFBouncingBalls *loadingAnimation;
 
 @property (strong, nonatomic) HoundHandler *houndHandler;
 
@@ -62,6 +63,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.loadingAnimation = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingAnimation.loaderColor = [UIColor blueColor];
+    self.loadingAnimation.diameter = 25.0f;
+    self.loadingAnimation.cornerRadius = 25.0f;
+    
     self.audioVisualBezierPath = [UIBezierPath bezierPath];
     self.audioVisualShapeLayer = [CAShapeLayer layer];
     [self.view.layer addSublayer:self.audioVisualShapeLayer];
@@ -80,6 +86,16 @@
             }
         });
     }];
+}
+
+- (void) showLoadingAnimation
+{
+    [self.loadingAnimation show];
+}
+
+- (void) hideLoadingAnimation
+{
+    [self.loadingAnimation hide];
 }
 
 - (void) viewDidAppear:(BOOL)animated
