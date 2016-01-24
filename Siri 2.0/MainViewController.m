@@ -315,44 +315,46 @@
     
 }
 
+//TODO: Pause main UI while (and after) we figure this out
+
 - (void) wantsEventsNearThem
 {
-    
+    NSLog(@"Wants event near them");
 }
 
 - (void) wantsEventsNearThem:(int)radius
 {
-    
+    NSLog(@"Wants event near them: %d", radius);
 }
 
 - (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
 {
-    
+    NSLog(@"Wants event near them: %@", keyWords);
 }
 
 - (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords
 {
-    
+    NSLog(@"Wants event near them: %d\t%@", radius, keyWords);
 }
 
 - (void) wantsNewsItemsNearThem
 {
-    
+    NSLog(@"Wants News Items near them");
 }
 
 - (void) wantsNewsItemsNearThem:(int)radius
 {
-    
+    NSLog(@"Wants News Items near them: %d", radius);
 }
 
 - (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords
 {
-    
+    NSLog(@"Wants News Items near them: %@", keyWords);
 }
 
 - (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords
 {
-    
+    NSLog(@"Wants News Items near them: %d\t%@", radius, keyWords);
 }
 
 

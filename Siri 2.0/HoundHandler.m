@@ -137,14 +137,14 @@ static HoundHandler *houndHandler;
 {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
-    
+
     //Start off with the big numbers, relatively large.
     for(int i = 100; i >= 0; i--) {
         NSString *number = [[numberFormatter stringFromNumber:@(i)] stringByReplacingOccurrencesOfString:@"-" withString:@""];
         
         //Number contains (ie. one hundred and one)
-        if([number containsString:text]) {
-            
+        if([text containsString:number]) {
+
             //Same length ie. one and one
             if([text rangeOfString:number].length == number.length) {
                 return i;
