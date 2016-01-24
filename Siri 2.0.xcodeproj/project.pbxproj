@@ -48,6 +48,7 @@
 		9405F7871C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77B1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@2x.png */; };
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
+		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,8 @@
 		9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-wht-toolbar-houndify-mic@3x.png"; sourceTree = "<group>"; };
 		94A335671C548F8100862C80 /* ParseCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseCommunicator.h; sourceTree = "<group>"; };
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
+		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
+		94A3356E1C54A9A300862C80 /* HoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoundHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,14 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				9405F7701C53D6C100C39CD8 /* Main View Controller */,
-				9405F70E1C535D3000C39CD8 /* AppDelegate.h */,
-				9405F70F1C535D3000C39CD8 /* AppDelegate.m */,
+				94A335701C54A9A700862C80 /* Hound Handler */,
+				94A3356A1C54A67800862C80 /* App Delegate */,
+				94A3356B1C54A68200862C80 /* Communicators */,
 				9405F76A1C5368DE00C39CD8 /* Constants */,
-				9405F7111C535D3000C39CD8 /* ViewController.h */,
-				9405F7121C535D3000C39CD8 /* ViewController.m */,
-				9405F7141C535D3000C39CD8 /* Main.storyboard */,
-				9405F7171C535D3000C39CD8 /* Assets.xcassets */,
-				9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */,
+				94A3356C1C54A97300862C80 /* Default Views */,
 				9405F71C1C535D3000C39CD8 /* Info.plist */,
 				9405F7891C53ED6B00C39CD8 /* Houndify Icons */,
 				9405F70B1C535D3000C39CD8 /* Supporting Files */,
@@ -257,8 +257,6 @@
 				9405F7551C535E1F00C39CD8 /* Constants.h */,
 				9405F7561C535E1F00C39CD8 /* Constants.m */,
 				9405F7581C535EBA00C39CD8 /* Constants.plist */,
-				94A335671C548F8100862C80 /* ParseCommunicator.h */,
-				94A335681C548F8100862C80 /* ParseCommunicator.m */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -290,6 +288,45 @@
 				9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */,
 			);
 			name = "Houndify Icons";
+			sourceTree = "<group>";
+		};
+		94A3356A1C54A67800862C80 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9405F70E1C535D3000C39CD8 /* AppDelegate.h */,
+				9405F70F1C535D3000C39CD8 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		94A3356B1C54A68200862C80 /* Communicators */ = {
+			isa = PBXGroup;
+			children = (
+				94A335671C548F8100862C80 /* ParseCommunicator.h */,
+				94A335681C548F8100862C80 /* ParseCommunicator.m */,
+			);
+			name = Communicators;
+			sourceTree = "<group>";
+		};
+		94A3356C1C54A97300862C80 /* Default Views */ = {
+			isa = PBXGroup;
+			children = (
+				9405F7111C535D3000C39CD8 /* ViewController.h */,
+				9405F7121C535D3000C39CD8 /* ViewController.m */,
+				9405F7141C535D3000C39CD8 /* Main.storyboard */,
+				9405F7171C535D3000C39CD8 /* Assets.xcassets */,
+				9405F7191C535D3000C39CD8 /* LaunchScreen.storyboard */,
+			);
+			name = "Default Views";
+			sourceTree = "<group>";
+		};
+		94A335701C54A9A700862C80 /* Hound Handler */ = {
+			isa = PBXGroup;
+			children = (
+				94A3356D1C54A9A300862C80 /* HoundHandler.h */,
+				94A3356E1C54A9A300862C80 /* HoundHandler.m */,
+			);
+			name = "Hound Handler";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */,
+				94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */,
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,

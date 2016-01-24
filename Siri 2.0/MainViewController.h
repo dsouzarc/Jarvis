@@ -12,6 +12,7 @@
 
 #import "Constants.h"
 #import "ParseCommunicator.h"
+#import "HoundHandler.h"
 
 @interface MainViewController : UIViewController
 

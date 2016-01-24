@@ -193,13 +193,10 @@
                                                           NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
                                                       }
                                                       else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
-                                                          NSLog(@"HERE: %@", dictionary);
-                                                          HoundDataHoundServer* houndServer = response;
-
-                                                          HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
-                                                          NSLog(@"%@", commandResult);
-                                                          
-                                                          NSDictionary* nativeData = commandResult[@"NativeData"];
+                                                          HoundDataHoundServer *houndServer = response;
+                                                          HoundDataCommandResult *commandResult = houndServer.allResults.firstObject;
+                                                          NSDictionary *nativeData = commandResult[@"NativeData"];
+                                                          [HoundHandler handleHoundResponse:dictionary nativeData:nativeData];
                                                           NSLog(@"NativeData: %@", nativeData);
                                                       }
                                                       else {
