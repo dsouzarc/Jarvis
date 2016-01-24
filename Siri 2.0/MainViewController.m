@@ -13,9 +13,22 @@
 @property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
+@property BOOL microphoneIsRecognizing;
+
 @end
 
 @implementation MainViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.microphoneIsRecognizing = NO;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +41,14 @@
     
     self.houndifyMicrophoneButton.clipsToBounds = YES;
     self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
+    
+    [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"ERROR IN VIEW DID LOAD: %@", error.localizedDescription);
+            }
+        });
+    }];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -105,7 +126,7 @@
                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                   
                                                   if (error) {
-                                                      NSLog(@"Error: %@", error.description);
+                                                      NSLog(@"Error ub start search: %@", error.description);
                                                   }
                                                   else {
                                                       if (responseType == HoundVoiceSearchResponseTypePartialTranscription) {
@@ -251,13 +272,15 @@
 
 - (void)hotPhrase
 {
-    [self startSearch];
+    //[self startSearch];
     NSLog(@"OK HOUND DETECTED");
 }
 
 - (IBAction)listeningButtonTapped
 {
     //self.listeningButton.enabled = NO;
+    
+    NSLog(@"TAPPED HERE");
     
     [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
         
@@ -271,15 +294,17 @@
                 //self.textView.text = error.localizedDescription;
             }
         });
-    }
-     ];
+    }];
     
 }
 
 - (IBAction)searchButtonTapped
 {
-    // Take action based on current voice search state
-    
+    [self switchHoundVoiceState];
+}
+
+- (void) switchHoundVoiceState
+{
     switch (HoundVoiceSearch.instance.state) {
         case HoundVoiceSearchStateNone:
             break;
@@ -349,7 +374,69 @@
 
 - (IBAction)microphoneButtonPressed:(id)sender
 {
-    static BOOL isListening = NO;
+    [self switchHoundVoiceState];
+    
+    return; //
+    
+    //Stop recognizing and translate
+    if(self.microphoneIsRecognizing) {
+        
+        self.microphoneIsRecognizing = NO;
+        NSDictionary* requestInfo = @{};
+        
+        NSURL* endPointURL = [NSURL URLWithString:[Constants soundHoundAudioURL]];
+        
+        [HoundVoiceSearch.instance startSearchWithRequestInfo:requestInfo endPointURL:endPointURL
+         
+                                              responseHandler:^(NSError* error, HoundVoiceSearchResponseType responseType, id response, NSDictionary* dictionary) {
+                                                  
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      
+                                                      if (error) {
+                                                          NSLog(@"Error ub start search: %@", error.description);
+                                                      }
+                                                      else {
+                                                          if (responseType == HoundVoiceSearchResponseTypePartialTranscription) {
+                                                              
+                                                              HoundDataPartialTranscript* partialTranscript = (HoundDataPartialTranscript*)response;
+                                                              NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
+                                                          }
+                                                          else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
+                                                              // Display response JSON
+                                                              
+                                                              NSLog(@"HERE: %@", dictionary);
+                                                              // Any properties from the documentation can be accessed through the keyed accessors, e.g.:
+                                                              
+                                                              HoundDataHoundServer* houndServer = response;
+                                                              HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
+                                                              NSDictionary* nativeData = commandResult[@"NativeData"];
+                                                              NSLog(@"NativeData: %@", nativeData);
+                                                          }
+                                                          else {
+                                                              NSLog(@"WE GOT NOTHING: %@", response);
+                                                          }
+                                                      }
+                                                  });
+                                              }];
+
+    }
+    
+    //Microphone is not recognizing, so start
+    else {
+        self.microphoneIsRecognizing = YES;
+        [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    NSLog(@"ERROR: %@", error.localizedDescription);
+                }
+                else {
+                    NSLog(@"NO ERROR DOWN HERE");
+                }
+            });
+        }];
+    }
+    
+    /*static BOOL isListening = NO;
     
     if (!isListening) {
         [HoundVoiceSearch.instance startListeningWithCompletionHandler:^(NSError* error) {
@@ -375,7 +462,7 @@
         }];
     }
     
-    [self startSearch];
+    [self startSearch];*/
 }
 
 @end
