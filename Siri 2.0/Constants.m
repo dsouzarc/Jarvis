@@ -41,6 +41,11 @@ static Constants *instance;
     return self;
 }
 
+- (CLLocation*) getMyLocation
+{
+    return self.locationManager.location;
+}
+
 - (PFGeoPoint*) getGeoPoint
 {
     return [PFGeoPoint geoPointWithLocation:self.locationManager.location];

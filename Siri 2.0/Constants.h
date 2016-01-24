@@ -24,6 +24,7 @@
 
 - (double) getMyLongitude;
 - (double) getMyLatitude;
+- (CLLocation*) getMyLocation;
 - (PFGeoPoint*) getGeoPoint;
 
 @end

@@ -49,6 +49,9 @@
 		9405F7881C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9405F77C1C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic@3x.png */; };
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
+		94FC02B51C54CF1200D2018D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC02B41C54CF1200D2018D /* MapKit.framework */; };
+		94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FC02B71C54CFA800D2018D /* MapViewController.m */; };
+		94FC02BA1C54CFA800D2018D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC02B81C54CFA800D2018D /* MapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +126,10 @@
 		94A335681C548F8100862C80 /* ParseCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCommunicator.m; sourceTree = "<group>"; };
 		94A3356D1C54A9A300862C80 /* HoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoundHandler.h; sourceTree = "<group>"; };
 		94A3356E1C54A9A300862C80 /* HoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoundHandler.m; sourceTree = "<group>"; };
+		94FC02B41C54CF1200D2018D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		94FC02B61C54CFA800D2018D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		94FC02B71C54CFA800D2018D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		94FC02B81C54CFA800D2018D /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +139,7 @@
 			files = (
 				9405F7691C5368AA00C39CD8 /* libHoundSDK.a in Frameworks */,
 				9405F7611C5364B300C39CD8 /* libc++.tbd in Frameworks */,
+				94FC02B51C54CF1200D2018D /* MapKit.framework in Frameworks */,
 				9405F75F1C53648500C39CD8 /* Accelerate.framework in Frameworks */,
 				9405F7431C535D9A00C39CD8 /* AudioToolbox.framework in Frameworks */,
 				9405F75D1C53647500C39CD8 /* AVFoundation.framework in Frameworks */,
@@ -189,6 +197,7 @@
 		9405F70A1C535D3000C39CD8 /* Siri 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				94FC02BB1C54CFAB00D2018D /* MapViewController */,
 				9405F7701C53D6C100C39CD8 /* Main View Controller */,
 				94A335701C54A9A700862C80 /* Hound Handler */,
 				94A3356A1C54A67800862C80 /* App Delegate */,
@@ -235,6 +244,7 @@
 				9405F7681C5368AA00C39CD8 /* libHoundSDK.a */,
 				9405F7601C5364B300C39CD8 /* libc++.tbd */,
 				9405F75E1C53648500C39CD8 /* Accelerate.framework */,
+				94FC02B41C54CF1200D2018D /* MapKit.framework */,
 				9405F75C1C53647500C39CD8 /* AVFoundation.framework */,
 				9405F7521C535DDD00C39CD8 /* libsqlite3.tbd */,
 				9405F7501C535DD400C39CD8 /* libz.tbd */,
@@ -329,6 +339,16 @@
 			name = "Hound Handler";
 			sourceTree = "<group>";
 		};
+		94FC02BB1C54CFAB00D2018D /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94FC02B61C54CFA800D2018D /* MapViewController.h */,
+				94FC02B71C54CFA800D2018D /* MapViewController.m */,
+				94FC02B81C54CFA800D2018D /* MapViewController.xib */,
+			);
+			name = MapViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +416,11 @@
 				TargetAttributes = {
 					9405F7071C535D3000C39CD8 = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9405F7201C535D3000C39CD8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -438,6 +463,7 @@
 				9405F7181C535D3000C39CD8 /* Assets.xcassets in Resources */,
 				9405F7811C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@2x.png in Resources */,
 				9405F7591C535EBA00C39CD8 /* Constants.plist in Resources */,
+				94FC02BA1C54CFA800D2018D /* MapViewController.xib in Resources */,
 				9405F7801C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic.png in Resources */,
 				9405F7861C53E4E300C39CD8 /* ic-wht-toolbar-houndify-mic.png in Resources */,
 				9405F7821C53E4E300C39CD8 /* ic-blk-toolbar-houndify-mic@3x.png in Resources */,
@@ -477,6 +503,7 @@
 				94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */,
 				94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */,
 				9405F7131C535D3000C39CD8 /* ViewController.m in Sources */,
+				94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
 				9405F76E1C53D6BB00C39CD8 /* MainViewController.m in Sources */,
