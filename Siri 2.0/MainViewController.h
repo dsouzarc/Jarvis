@@ -11,6 +11,7 @@
 #import <HoundSDK/HoundSDK.h>
 
 #import "Constants.h"
+#import "ParseCommunicator.h"
 
 @interface MainViewController : UIViewController
 

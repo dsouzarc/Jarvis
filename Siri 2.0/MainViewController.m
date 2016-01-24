@@ -56,6 +56,15 @@
             }
         });
     }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        NSMutableArray *results = [ParseCommunicator getEventsNearMeWithKeyWord:@"iPhone"];
+        
+        for(NSObject *result in results) {
+            NSLog(@"Result: %@", result);
+        }
+        NSLog(@"%@", [[Constants getInstance] getGeoPoint]);
+    });
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -123,16 +132,17 @@
                      animations:^{
                          [UIView setAnimationRepeatCount:INT_MAX];
                          self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                          [self.view layoutIfNeeded];
                      }
                      completion:^(BOOL finished) {
                          self.houndifyMicrophoneButton.layer.shadowRadius = 0.0f;
                          self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-                         self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
-                         self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
+                         
+                         //self.houndifyMicrophoneButton.frame = CGRectMake(self.view.center.x, 432, 80, 80); //0, 0, self.houndifyMicrophoneButton.frame.size.width * (2/3), self.houndifyMicrophoneButton.frame.size.height * (2/3));
+                         //self.houndifyMicrophoneButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (40 + 80));
                          NSLog(@"DECREASING: %@", NSStringFromCGRect(self.houndifyMicrophoneButton.frame));
                      }
      ];
-    
 }
 
 - (void) startSearch
@@ -161,7 +171,9 @@
                                                               UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
                                                               textLabel.center = self.view.center;
                                                               [textLabel setText:partialTranscript.partialTranscript];
+                                                              [self.textView setText:partialTranscript.partialTranscript];
                                                               //[self.view addSubview:textLabel];
+                                                              [self.view layoutIfNeeded];
                                                               /*[UIView transitionWithView:textLabel
                                                                                 duration:0.5f
                                                                                  options:UIViewAnimationOptionCurveEaseOut
@@ -183,9 +195,13 @@
                                                           NSLog(@"PARTIAL: %@", partialTranscript.partialTranscript);
                                                       }
                                                       else if (responseType == HoundVoiceSearchResponseTypeHoundServer) {
-                                                          NSLog(@"HERE: %@", dictionary);
+                                                          //NSLog(@"HERE: %@", dictionary);
                                                           HoundDataHoundServer* houndServer = response;
+                                                          
+                                                          
                                                           HoundDataCommandResult* commandResult = houndServer.allResults.firstObject;
+                                                          NSLog(@"%@", commandResult);
+                                                          
                                                           NSDictionary* nativeData = commandResult[@"NativeData"];
                                                           NSLog(@"NativeData: %@", nativeData);
                                                       }
