@@ -94,18 +94,18 @@
 
 - (void) noResponse
 {
-    NSLog(@"NO RESPONSE");
+    [self.mainViewController showText:@"No response"];
 }
 
 - (void) notUnderstandableResponse
 {
-    
-    NSLog(@"NOT UNDERSTANDABLE");
+    [self.mainViewController showText:@"Command not understood"];
 }
 
 - (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription
 {
     NSLog(@"NOT SUPPORTED");
+    [self.mainViewController showText:@"Command not supported"];
 }
 
 //TODO: Pause main UI while (and after) we figure this out
@@ -113,67 +113,161 @@
 - (void) wantsEventsNearThem
 {
     NSLog(@"Wants event near them");
+    [self.mainViewController showText:@"Events near me"];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsEventsNearThem:(int)radius
 {
     NSLog(@"Wants event near them: %d", radius);
-    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.mainViewController showText:[NSString stringWithFormat:@"Events near me: %d miles", radius]];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
 {
     NSLog(@"Wants event near them: %@", keyWords);
-    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self.mainViewController showText:[NSString stringWithFormat:@"Events near me: %@", keyWords]];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords
 {
     NSLog(@"Wants event near them: %d\t%@", radius, keyWords);
-    NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius keyWords:keyWords];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.mainViewController showText:[NSString stringWithFormat:@"Events near me: %d miles\t%@", radius, keyWords]];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius keyWords:keyWords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsNewsItemsNearThem
 {
     NSLog(@"Wants News Items near them");
-    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.mainViewController showText:@"News items near them"];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsNewsItemsNearThem:(int)radius
 {
     NSLog(@"Wants News Items near them: %d", radius);
-    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.mainViewController showText:[NSString stringWithFormat:@"News Items near me: %d miles", radius]];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords
 {
-    NSLog(@"Wants News Items near them: %@", keyWords);
-    NSMutableArray *dataPoints = [ParseCommunicator  getNewsItemsNearMeWithKeyWords:keyWords];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.mainViewController showText:[NSString stringWithFormat:@"News items near me: %@", keyWords]];
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords
 {
     NSLog(@"Wants News Items near them: %d\t%@", radius, keyWords);
-    NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius keyWords:keyWords];
-    [self.mapViewController setDataPoints:dataPoints];
-    [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self.mainViewController showText:[NSString stringWithFormat:@"News items near me: %@\t%d", keyWords, radius]];
+    
+    [self.mainViewController showLoadingAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius keyWords:keyWords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            [self.mainViewController hideLoadingAnimation];
+            [self.mapViewController setDataPoints:dataPoints];
+            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        });
+    });
 }
 
 - (void) wantsCommunityService
 {
     NSLog(@"COMMUNITY SERVICES");
+    [self.mainViewController showText:@"Community service"];
     [self.mainViewController showLoadingAnimation];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         
@@ -181,8 +275,8 @@
        //NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
         //[dataPoints addObjectsFromArray:[ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords]];
         NSMutableArray *dataPoints = [ParseCommunicator getKindness];
-        [dataPoints addObjectsFromArray:[ParseCommunicator getFamily]];
-        [dataPoints addObjectsFromArray:[ParseCommunicator getHousing]];
+        //[dataPoints addObjectsFromArray:[ParseCommunicator getFamily]];
+        //[dataPoints addObjectsFromArray:[ParseCommunicator getHousing]];
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             [self.mainViewController hideLoadingAnimation];

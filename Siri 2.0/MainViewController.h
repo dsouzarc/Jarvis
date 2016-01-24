@@ -21,4 +21,6 @@
 - (void) showLoadingAnimation;
 - (void) hideLoadingAnimation;
 
+- (void) showText:(NSString*)text;
+
 @end

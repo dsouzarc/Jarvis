@@ -220,7 +220,6 @@
 		9405F70A1C535D3000C39CD8 /* Siri 2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				941DFB101C552AD00040B366 /* PQF Loaders */,
 				9408C9681C54E91F00967DE7 /* CentralViewController.h */,
 				9408C9691C54E91F00967DE7 /* CentralViewController.m */,
 				9408C96A1C54E91F00967DE7 /* CentralViewController.xib */,
@@ -230,6 +229,7 @@
 				94A3356A1C54A67800862C80 /* App Delegate */,
 				94A3356B1C54A68200862C80 /* Communicators */,
 				9405F76A1C5368DE00C39CD8 /* Constants */,
+				941DFB101C552AD00040B366 /* PQF Loaders */,
 				94A3356C1C54A97300862C80 /* Default Views */,
 				9405F71C1C535D3000C39CD8 /* Info.plist */,
 				9405F7891C53ED6B00C39CD8 /* Houndify Icons */,

@@ -222,7 +222,7 @@ const int MAX_KEY_WORDS = 5;
 
 + (NSMutableArray*) getArrayForSchema:(NSString*)schema
 {
-    static NSString *url = @"https://api.everyblock.com/content/philly/topnews?token=fd5f0d8fc74fd048fbb811ee29215be5fef04274&schema=";
+    NSString *url = @"https://api.everyblock.com/content/philly/topnews?token=fd5f0d8fc74fd048fbb811ee29215be5fef04274&schema=";
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];

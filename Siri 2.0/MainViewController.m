@@ -331,4 +331,9 @@
     NSLog(@"OK HOUND DETECTED");
 }
 
+- (void) showText:(NSString *)text
+{
+    [self.textView setText:text];
+}
+
 @end
