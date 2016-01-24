@@ -14,6 +14,6 @@
 #import "ParseCommunicator.h"
 #import "HoundHandler.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <HoundHandlerDelegate>
 
 @end

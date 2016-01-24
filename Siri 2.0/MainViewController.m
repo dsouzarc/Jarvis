@@ -16,6 +16,8 @@
 @property (strong, nonatomic) UIBezierPath *audioVisualBezierPath;
 @property (strong, nonatomic) CAShapeLayer *audioVisualShapeLayer;
 
+@property (strong, nonatomic) HoundHandler *houndHandler;
+
 @property BOOL microphoneIsRecognizing;
 
 @end
@@ -37,6 +39,8 @@
     
     if(self) {
         self.microphoneIsRecognizing = NO;
+        self.houndHandler = [HoundHandler getInstance];
+        self.houndHandler.delegate = self;
     }
     
     return self;
@@ -196,8 +200,7 @@
                                                           HoundDataHoundServer *houndServer = response;
                                                           HoundDataCommandResult *commandResult = houndServer.allResults.firstObject;
                                                           NSDictionary *nativeData = commandResult[@"NativeData"];
-                                                          [HoundHandler handleHoundResponse:dictionary nativeData:nativeData];
-                                                          NSLog(@"NativeData: %@", nativeData);
+                                                          [self.houndHandler handleHoundResponse:dictionary nativeData:nativeData];
                                                       }
                                                       else {
                                                           NSLog(@"WE GOT NOTHING: %@", response);
@@ -286,6 +289,70 @@
             [HoundVoiceSearch.instance stopSpeaking];
             break;
     }
+}
+
+
+/****************************************************************
+ *
+ *              HoundHandler Delegate
+ *
+*****************************************************************/
+
+# pragma mark HoundHandler Delegate
+
+- (void) noResponse
+{
+    
+}
+
+- (void) notUnderstandableResponse
+{
+    
+}
+
+- (void) commandNotSupported:(NSString*)commandKind transcription:(NSString*)transcription
+{
+    
+}
+
+- (void) wantsEventsNearThem
+{
+    
+}
+
+- (void) wantsEventsNearThem:(int)radius
+{
+    
+}
+
+- (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
+{
+    
+}
+
+- (void) wantsEventsNearThem:(int)radius keyWords:(NSArray*)keyWords
+{
+    
+}
+
+- (void) wantsNewsItemsNearThem
+{
+    
+}
+
+- (void) wantsNewsItemsNearThem:(int)radius
+{
+    
+}
+
+- (void) wantsNewsItemsNearThemWithKeyWords:(NSArray*)keyWords
+{
+    
+}
+
+- (void) wantsNewsItemsNearThem:(int)radius keyWords:(NSArray*)keyWords
+{
+    
 }
 
 
