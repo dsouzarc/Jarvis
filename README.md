@@ -2,11 +2,21 @@
 
 ####PennApps 2016 Winter
 
+---
+
 Uses Soundify's Houd SDK for voice recognition and understanding speech as well as Comcast's Everblock and CapitalOne's Nessie API to gather data about companies and events near by.
 
 Description on [Devpost page](http://devpost.com/software/jarvis-dpi4w5)
 
-Google's Great, But...
+--- 
+
+[MP4 Demo Link] (https://github.com/dsouzarc/Jarvis/blob/master/Demos/Jarvis%20Demo%20-%20High%20Quality.mp4)
+
+![Demo] (https://github.com/dsouzarc/Jarvis/blob/master/Demos/Jarvis%20Demo%20-%20High%20Quality.mp4)
+
+---
+
+####Google's Great, But...
 A majority of their 'Top Hit' websites are bought - not earned. And despite their advances in Machine Learning and Artificial Intelligence, Google's recommendations are bland and don't predict me - or my friends - well at all.
 
 For the purpose of this piece, I just 'Googled' places to eat in Princeton, NJ, my home-town. 5 out of the top 6 suggestions are meant for people ages 60+ and with exquisite, refined tastes; definitely not what I'm going for and certainly not what my search histories have indicated. Google's 6th recommendation was closed - and had been closed - for the past few months.
