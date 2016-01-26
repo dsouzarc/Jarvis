@@ -8,53 +8,6 @@
 
 #import "MainViewController.h"
 
-@interface VisualizerLineView : UIView
-
-- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel;
-
-@end
-
-@interface VisualizerLineView ()
-
-@property CGPoint startPoint;
-@property CGPoint endPoint;
-
-@property float audioLevel;
-
-@end
-
-@implementation VisualizerLineView
-
-- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel
-{
-    self = [super initWithFrame:frame];
-    
-    if(self) {
-        self.audioLevel = audioLevel;
-    }
-    
-    return self;
-}
-
-- (void) drawRect:(CGRect)rect
-{
-    UIBezierPath *audioVisualBezierPath = [UIBezierPath bezierPath];
-    CAShapeLayer *audioVisualShapeLayer = [CAShapeLayer layer];
-    
-    self.startPoint = CGPointMake(0, 0);
-    self.endPoint = CGPointMake(0, self.frame.size.height);
-    
-    [audioVisualBezierPath moveToPoint:self.startPoint];
-    [audioVisualBezierPath addLineToPoint:self.endPoint];
-    audioVisualShapeLayer.path  = [audioVisualBezierPath CGPath];
-    [audioVisualShapeLayer setStrokeColor:[[UIColor blueColor] CGColor]];
-    audioVisualShapeLayer.lineWidth = 1.0f;
-    
-    [self.layer addSublayer:audioVisualShapeLayer];
-}
-
-@end
-
 @interface MainViewController ()
 
 @property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
@@ -71,26 +24,6 @@
 @end
 
 @implementation MainViewController
-
-
-- (void)audioLevel:(NSNotification*)notification
-{
-    //Between 0 and 1
-    float audioLevel = [notification.object floatValue];
-    double levelSize = audioLevel * 100.0;
-    double height = self.view.frame.size.height - levelSize;
-    
-    VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, height, 1, levelSize) audioLevel:audioLevel];
- 
-    [self.view addSubview:lineView];
-    [UIView animateWithDuration:5
-                     animations:^(void) {
-                         lineView.frame = CGRectMake(self.view.frame.size.width, height, 1, levelSize);
-                     } completion:^(BOOL finished) {
-                         [lineView removeFromSuperview];
-                     }
-     ];
-}
 
 
 /****************************************************************
@@ -342,6 +275,25 @@
             [HoundVoiceSearch.instance stopSpeaking];
             break;
     }
+}
+
+- (void)audioLevel:(NSNotification*)notification
+{
+    //Between 0 and 1
+    float audioLevel = [notification.object floatValue];
+    double levelSize = audioLevel * 100.0;
+    double height = self.view.frame.size.height - levelSize;
+    
+    VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, height, 1, levelSize) audioLevel:audioLevel];
+    
+    [self.view addSubview:lineView];
+    [UIView animateWithDuration:5
+                     animations:^(void) {
+                         lineView.frame = CGRectMake(self.view.frame.size.width, height, 1, levelSize);
+                     } completion:^(BOOL finished) {
+                         [lineView removeFromSuperview];
+                     }
+     ];
 }
 
 

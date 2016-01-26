@@ -14,6 +14,7 @@
 #import "ParseCommunicator.h"
 #import "HoundHandler.h"
 #import "PQFBouncingBalls.h"
+#import "VisualizerLineView.h"
 #import "MapViewController.h"
 
 @interface MainViewController : UIViewController

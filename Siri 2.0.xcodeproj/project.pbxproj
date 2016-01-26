@@ -57,6 +57,7 @@
 		94A335691C548F8100862C80 /* ParseCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A335681C548F8100862C80 /* ParseCommunicator.m */; };
 		94A3356F1C54A9A300862C80 /* HoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3356E1C54A9A300862C80 /* HoundHandler.m */; };
 		94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */; };
+		94D6EC1F1C581B46002C2B3B /* VisualizerLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D6EC1E1C581B46002C2B3B /* VisualizerLineView.m */; };
 		94FC02B51C54CF1200D2018D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC02B41C54CF1200D2018D /* MapKit.framework */; };
 		94FC02B91C54CFA800D2018D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FC02B71C54CFA800D2018D /* MapViewController.m */; };
 		94FC02BA1C54CFA800D2018D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC02B81C54CFA800D2018D /* MapViewController.xib */; };
@@ -149,6 +150,8 @@
 		94A3356E1C54A9A300862C80 /* HoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoundHandler.m; sourceTree = "<group>"; };
 		94C2192D1C54D42C00C525DD /* PVAttractionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVAttractionAnnotation.h; sourceTree = "<group>"; };
 		94C2192E1C54D42C00C525DD /* PVAttractionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVAttractionAnnotation.m; sourceTree = "<group>"; };
+		94D6EC1D1C581B46002C2B3B /* VisualizerLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualizerLineView.h; sourceTree = "<group>"; };
+		94D6EC1E1C581B46002C2B3B /* VisualizerLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualizerLineView.m; sourceTree = "<group>"; };
 		94FC02B41C54CF1200D2018D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		94FC02B61C54CFA800D2018D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		94FC02B71C54CFA800D2018D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -220,9 +223,8 @@
 		9405F70A1C535D3000C39CD8 /* Siri 2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				9408C9681C54E91F00967DE7 /* CentralViewController.h */,
-				9408C9691C54E91F00967DE7 /* CentralViewController.m */,
-				9408C96A1C54E91F00967DE7 /* CentralViewController.xib */,
+				94D6EC201C581BBB002C2B3B /* Visualizer View */,
+				94D6EC211C581BC8002C2B3B /* Central Controller */,
 				94FC02BB1C54CFAB00D2018D /* MapViewController */,
 				9405F7701C53D6C100C39CD8 /* Main View Controller */,
 				94A335701C54A9A700862C80 /* Hound Handler */,
@@ -390,6 +392,25 @@
 				94A3356E1C54A9A300862C80 /* HoundHandler.m */,
 			);
 			name = "Hound Handler";
+			sourceTree = "<group>";
+		};
+		94D6EC201C581BBB002C2B3B /* Visualizer View */ = {
+			isa = PBXGroup;
+			children = (
+				94D6EC1D1C581B46002C2B3B /* VisualizerLineView.h */,
+				94D6EC1E1C581B46002C2B3B /* VisualizerLineView.m */,
+			);
+			name = "Visualizer View";
+			sourceTree = "<group>";
+		};
+		94D6EC211C581BC8002C2B3B /* Central Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9408C9681C54E91F00967DE7 /* CentralViewController.h */,
+				9408C9691C54E91F00967DE7 /* CentralViewController.m */,
+				9408C96A1C54E91F00967DE7 /* CentralViewController.xib */,
+			);
+			name = "Central Controller";
 			sourceTree = "<group>";
 		};
 		94FC02BB1C54CFAB00D2018D /* MapViewController */ = {
@@ -564,6 +585,7 @@
 				9408C96B1C54E91F00967DE7 /* CentralViewController.m in Sources */,
 				9405F7101C535D3000C39CD8 /* AppDelegate.m in Sources */,
 				9405F70D1C535D3000C39CD8 /* main.m in Sources */,
+				94D6EC1F1C581B46002C2B3B /* VisualizerLineView.m in Sources */,
 				941DFB0B1C552AC60040B366 /* PQFBarsInCircle.m in Sources */,
 				94C2192F1C54D42C00C525DD /* PVAttractionAnnotation.m in Sources */,
 				941DFB0F1C552AC60040B366 /* UIColor+FlatColors.m in Sources */,
