@@ -45,6 +45,8 @@ static HoundHandler *houndHandler;
 
 - (void) handleHoundResponse:(NSDictionary *)response nativeData:(NSDictionary *)nativeData
 {
+    [self.delegate wantsCommunityService];
+    
     if(nativeData) {
         NSLog(@"NATIVE DATA%@", nativeData);
     }

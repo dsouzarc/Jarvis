@@ -223,20 +223,18 @@ const int MAX_KEY_WORDS = 5;
 + (NSMutableArray*) getArrayForSchema:(NSString*)schema
 {
     NSString *url = @"https://api.everyblock.com/content/philly/topnews?token=fd5f0d8fc74fd048fbb811ee29215be5fef04274&schema=";
+    NSString *totalURL = [NSString stringWithFormat:@"%@%@", url, schema];
+    
+    NSLog(@"TOTAL URL: %@", totalURL);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, schema]]];
+    [request setURL:[NSURL URLWithString:totalURL]];
     
-    NSError *error = [[NSError alloc] init];
+    NSError *error;
     NSHTTPURLResponse *responseCode = nil;
     
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
-        return nil;
-    }
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:oResponseData options: NSJSONReadingMutableContainers error:&error];
     
     return JSON[@"results"];

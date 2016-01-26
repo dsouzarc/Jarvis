@@ -206,11 +206,16 @@
     });
 }
 
+
+
 - (void) wantsNewsItemsNearThem:(int)radius
 {
     NSLog(@"Wants News Items near them: %d", radius);
     [self.mainViewController showText:[NSString stringWithFormat:@"News Items near me: %d miles", radius]];
     [self.mainViewController showLoadingAnimation];
+    
+    SEL newsItemsNearMe = NSSelectorFromString(@"getNewsItemsNearMe");
+    obj
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         
@@ -272,13 +277,19 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         
         NSArray *keyWords = @[@"happy", @"happiness", @"community", @"service", @"help", @"old", @"homeless", @"kind", @"caring", @"red", @"cross", @"act", @"of", @"kindness", @"soup", @"kitch", @"food", @"drive"];
-       //NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
+       NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
+        [dataPoints addObjectsFromArray:[ParseCommunicator getKindness]];
+        
+        NSLog(@"WE GOT THE DATA");
+        
+        
         //[dataPoints addObjectsFromArray:[ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords]];
-        NSMutableArray *dataPoints = [ParseCommunicator getKindness];
+        
         //[dataPoints addObjectsFromArray:[ParseCommunicator getFamily]];
         //[dataPoints addObjectsFromArray:[ParseCommunicator getHousing]];
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
             [self.mainViewController hideLoadingAnimation];
             NSLog(@"LEAVING HERE WITH: %ld", dataPoints.count);
             [self.mapViewController setDataPoints:dataPoints];
