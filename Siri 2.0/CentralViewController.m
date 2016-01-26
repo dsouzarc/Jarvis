@@ -234,10 +234,9 @@
 - (void) showMapViewWithData:(NSMutableArray*)dataPoints
 {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
-        
-        [self.mainViewController hideLoadingAnimation];
         [self.mapViewController setDataPoints:dataPoints];
         [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.mainViewController hideLoadingAnimation];
     });
 }
 
