@@ -35,6 +35,8 @@
 
 @end
 
+/** Handles Houndify's responses */
+
 @interface HoundHandler : NSObject
 
 @property (weak, nonatomic) id<HoundHandlerDelegate> delegate;

@@ -15,6 +15,9 @@
 #import "HoundHandler.h"
 #import "ParseCommunicator.h"
 
+
+/** MainViewController - controls MapView and MainView */
+
 @interface CentralViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, MapViewControllerDelegate, HoundHandlerDelegate>
 
 @end

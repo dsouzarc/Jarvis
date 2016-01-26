@@ -12,6 +12,15 @@ static HoundHandler *houndHandler;
 
 @implementation HoundHandler
 
+
+/****************************************************************
+ *
+ *              Constructor
+ *
+*****************************************************************/
+
+# pragma mark Constructor
+
 + (instancetype) getInstance
 {
     @synchronized(self) {
@@ -100,10 +109,6 @@ static HoundHandler *houndHandler;
     [self handleNewsItems:transcription];
     
     //[self.delegate notUnderstandableResponse];
-    
-    /*NSLog(@"CommandKind: %@", commandKind);
-    NSLog(@"WrittenResponse: %@", writtenResponse);
-    NSLog(@"Transcription: %@", transcription);*/
 }
 
 - (void) handleNewsItems:(NSString*)transcription

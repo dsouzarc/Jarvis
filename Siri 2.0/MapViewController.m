@@ -22,6 +22,15 @@
 
 @implementation MapViewController
 
+
+/****************************************************************
+ *
+ *              Constructor
+ *
+*****************************************************************/
+
+# pragma mark Constructor
+
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil houndHandlerInformation:(NSDictionary *)houndHandlerInformation setOfPoints:(NSMutableArray *)setOfPoints
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,53 +53,6 @@
         self.annotations = [[NSMutableArray alloc] init];
     }
     return self;
-}
-
-- (void) setDataPoints:(NSMutableArray *)dataPoints
-{
-    if(self.annotations.count > 0) {
-        for(PVAttractionAnnotation *annotation in self.annotations) {
-            [self.mapView removeAnnotation:annotation];
-        }
-    }
-    
-    self.annotations = [[NSMutableArray alloc] init];
-    self.parseData = dataPoints;
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        for(NSDictionary *pointToDisplay in dataPoints) {
-        
-            PFGeoPoint *geoPoint;
-            CGPoint point = CGPointZero;
-            
-            if([pointToDisplay[@"location_coordinates"] class] == [PFGeoPoint class]) {
-                geoPoint = pointToDisplay[@"location_coordinates"];
-
-                point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
-            }
-            else {
-                NSDictionary *goodLocation = [pointToDisplay[@"location_coordinates"] firstObject];
-                geoPoint = pointToDisplay[@"location_coordinates"];
-                
-                if(goodLocation) {
-                    point = CGPointMake([goodLocation[@"latitude"] doubleValue], [goodLocation[@"longitude"] doubleValue]);
-                }
-                else {
-                    point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
-                }
-            }
-        
-            NSLog(@"ADDING POINT: %@", NSStringFromCGPoint(point));
-        
-            PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
-            annotation.coordinate = CLLocationCoordinate2DMake(point.x, point.y);
-        
-            annotation.title = pointToDisplay[@"title"];
-            annotation.subtitle = pointToDisplay[@"business_name"];
-        
-            [self.mapView addAnnotation:annotation];
-            [self.annotations addObject:annotation];
-        }
-    });
 }
 
 - (void)viewDidLoad {
@@ -218,6 +180,53 @@
                      }
      ];
     
+}
+
+- (void) setDataPoints:(NSMutableArray *)dataPoints
+{
+    if(self.annotations.count > 0) {
+        for(PVAttractionAnnotation *annotation in self.annotations) {
+            [self.mapView removeAnnotation:annotation];
+        }
+    }
+    
+    self.annotations = [[NSMutableArray alloc] init];
+    self.parseData = dataPoints;
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        for(NSDictionary *pointToDisplay in dataPoints) {
+            
+            PFGeoPoint *geoPoint;
+            CGPoint point = CGPointZero;
+            
+            if([pointToDisplay[@"location_coordinates"] class] == [PFGeoPoint class]) {
+                geoPoint = pointToDisplay[@"location_coordinates"];
+                
+                point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+            }
+            else {
+                NSDictionary *goodLocation = [pointToDisplay[@"location_coordinates"] firstObject];
+                geoPoint = pointToDisplay[@"location_coordinates"];
+                
+                if(goodLocation) {
+                    point = CGPointMake([goodLocation[@"latitude"] doubleValue], [goodLocation[@"longitude"] doubleValue]);
+                }
+                else {
+                    point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+                }
+            }
+            
+            NSLog(@"ADDING POINT: %@", NSStringFromCGPoint(point));
+            
+            PVAttractionAnnotation *annotation = [[PVAttractionAnnotation alloc] init];
+            annotation.coordinate = CLLocationCoordinate2DMake(point.x, point.y);
+            
+            annotation.title = pointToDisplay[@"title"];
+            annotation.subtitle = pointToDisplay[@"business_name"];
+            
+            [self.mapView addAnnotation:annotation];
+            [self.annotations addObject:annotation];
+        }
+    });
 }
 
 - (IBAction)longPressMicrophone:(id)sender {

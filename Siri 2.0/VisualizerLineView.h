@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+/** Line visualizer for detecting audio */
+
 @interface VisualizerLineView : UIView
 
 - (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel isListening:(BOOL)isListening;

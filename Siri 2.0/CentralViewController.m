@@ -21,6 +21,15 @@
 
 @implementation CentralViewController
 
+
+/****************************************************************
+ *
+ *              Constructor
+ *
+*****************************************************************/
+
+# pragma mark Constructor
+
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,6 +61,15 @@
     [self.pageViewController didMoveToParentViewController:self];
     
 }
+
+
+/****************************************************************
+ *
+ *              PageViewController Data Source
+ *
+*****************************************************************/
+
+# pragma mark PageViewController Data Source
 
 - (UIViewController*) pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
@@ -107,8 +125,6 @@
     NSLog(@"NOT SUPPORTED");
     [self.mainViewController showText:@"Command not supported"];
 }
-
-//TODO: Pause main UI while (and after) we figure this out
 
 - (void) wantsEventsNearThem
 {
@@ -219,14 +235,6 @@
         NSArray *keyWords = @[@"happy", @"happiness", @"community", @"service", @"help", @"old", @"homeless", @"kind", @"caring", @"red", @"cross", @"act", @"of", @"kindness", @"soup", @"kitch", @"food", @"drive"];
        NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
         [dataPoints addObjectsFromArray:[ParseCommunicator getKindness]];
-        
-        NSLog(@"WE GOT THE DATA");
-        
-        
-        //[dataPoints addObjectsFromArray:[ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords]];
-        
-        //[dataPoints addObjectsFromArray:[ParseCommunicator getFamily]];
-        //[dataPoints addObjectsFromArray:[ParseCommunicator getHousing]];
         [self showMapViewWithData:dataPoints];
     });
 }

@@ -10,12 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import <HoundSDK/HoundSDK.h>
 
-#import "Constants.h"
-#import "ParseCommunicator.h"
-#import "HoundHandler.h"
 #import "PQFBouncingBalls.h"
 #import "VisualizerLineView.h"
 #import "MapViewController.h"
+
+#import "Constants.h"
+#import "ParseCommunicator.h"
+#import "HoundHandler.h"
+
+
+/** MainViewController with Jarvis */
 
 @interface MainViewController : UIViewController
 

@@ -88,16 +88,6 @@
     }];
 }
 
-- (void) showLoadingAnimation
-{
-    [self.loadingAnimation show];
-}
-
-- (void) hideLoadingAnimation
-{
-    [self.loadingAnimation hide];
-}
-
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -327,5 +317,15 @@
     [self.textView setText:text];
 }
 
-@end
 
+- (void) showLoadingAnimation
+{
+    [self.loadingAnimation show];
+}
+
+- (void) hideLoadingAnimation
+{
+    [self.loadingAnimation hide];
+}
+
+@end

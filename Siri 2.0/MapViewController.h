@@ -22,6 +22,9 @@
 
 @end
 
+
+/** Displays the MapView along with GeoPoints */
+
 @interface MapViewController : UIViewController <MKOverlay, MKMapViewDelegate, MKAnnotation>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil houndHandlerInformation:(NSDictionary*)houndHandlerInformation setOfPoints:(NSMutableArray*)setOfPoints;
