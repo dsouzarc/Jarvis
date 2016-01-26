@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
 
-
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) NSDictionary *houndHandlerInformation;
@@ -60,16 +59,24 @@
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         for(NSDictionary *pointToDisplay in dataPoints) {
         
-            NSDictionary *goodLocation = [pointToDisplay[@"location_coordinates"] firstObject];
-            PFGeoPoint *geoPoint = pointToDisplay[@"location_coordinates"];
-        
+            PFGeoPoint *geoPoint;
             CGPoint point = CGPointZero;
-        
-            if(goodLocation) {
-                point = CGPointMake([goodLocation[@"latitude"] doubleValue], [goodLocation[@"longitude"] doubleValue]);
+            
+            if([pointToDisplay[@"location_coordinates"] class] == [PFGeoPoint class]) {
+                geoPoint = pointToDisplay[@"location_coordinates"];
+
+                point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
             }
             else {
-                point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+                NSDictionary *goodLocation = [pointToDisplay[@"location_coordinates"] firstObject];
+                geoPoint = pointToDisplay[@"location_coordinates"];
+                
+                if(goodLocation) {
+                    point = CGPointMake([goodLocation[@"latitude"] doubleValue], [goodLocation[@"longitude"] doubleValue]);
+                }
+                else {
+                    point = CGPointMake(geoPoint.latitude, geoPoint.longitude);
+                }
             }
         
             NSLog(@"ADDING POINT: %@", NSStringFromCGPoint(point));

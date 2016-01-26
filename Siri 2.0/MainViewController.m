@@ -75,7 +75,7 @@
     self.houndifyMicrophoneButton.clipsToBounds = YES;
     self.houndifyMicrophoneButton.layer.cornerRadius = self.houndifyMicrophoneButton.frame.size.width / 2.0;
     
-    [[HoundVoiceSearch instance] enableSpeech];
+    //[[HoundVoiceSearch instance] enableSpeech];
     [[HoundVoiceSearch instance] enableHotPhraseDetection];
     [[HoundVoiceSearch instance] enableEndOfSpeechDetection];
     
@@ -145,7 +145,7 @@
     self.houndifyMicrophoneButton.layer.masksToBounds = NO;
     
     [UIView animateWithDuration:1.0f delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction |UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAutoreverse | UIViewAnimationCurveEaseInOut | UIViewAnimationOptionRepeat
+                        options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction |UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAutoreverse
                      animations:^{
                          [UIView setAnimationRepeatCount:INT_MAX];
                          self.houndifyMicrophoneButton.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
@@ -284,7 +284,7 @@
     double levelSize = audioLevel * 100.0;
     double height = self.view.frame.size.height - levelSize;
     
-    VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, height, 1, levelSize) audioLevel:audioLevel];
+    VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, height, 1, levelSize) audioLevel:audioLevel isListening:self.microphoneIsRecognizing];
     
     [self.view addSubview:lineView];
     [UIView animateWithDuration:5

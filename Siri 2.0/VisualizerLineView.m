@@ -11,21 +11,20 @@
 
 @interface VisualizerLineView ()
 
-@property CGPoint startPoint;
-@property CGPoint endPoint;
-
 @property float audioLevel;
+@property BOOL isListening;
 
 @end
 
 @implementation VisualizerLineView
 
-- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel
+- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel isListening:(BOOL)isListening
 {
     self = [super initWithFrame:frame];
     
     if(self) {
         self.audioLevel = audioLevel;
+        self.isListening = isListening;
     }
     
     return self;
@@ -36,13 +35,20 @@
     UIBezierPath *audioVisualBezierPath = [UIBezierPath bezierPath];
     CAShapeLayer *audioVisualShapeLayer = [CAShapeLayer layer];
     
-    self.startPoint = CGPointMake(0, 0);
-    self.endPoint = CGPointMake(0, self.frame.size.height);
+    CGPoint startPoint = CGPointZero;
+    CGPoint endPoint = CGPointMake(0, self.frame.size.height);
     
-    [audioVisualBezierPath moveToPoint:self.startPoint];
-    [audioVisualBezierPath addLineToPoint:self.endPoint];
+    [audioVisualBezierPath moveToPoint:startPoint];
+    [audioVisualBezierPath addLineToPoint:endPoint];
+    
+    if(self.isListening) {
+        [audioVisualShapeLayer setStrokeColor:[[UIColor greenColor] CGColor]];
+    }
+    else {
+        [audioVisualShapeLayer setStrokeColor:[[UIColor redColor] CGColor]];
+    }
+    
     audioVisualShapeLayer.path  = [audioVisualBezierPath CGPath];
-    [audioVisualShapeLayer setStrokeColor:[[UIColor blueColor] CGColor]];
     audioVisualShapeLayer.lineWidth = 1.0f;
     
     [self.layer addSublayer:audioVisualShapeLayer];

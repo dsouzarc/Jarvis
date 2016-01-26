@@ -10,6 +10,6 @@
 
 @interface VisualizerLineView : UIView
 
-- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel;
+- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel isListening:(BOOL)isListening;
 
 @end
