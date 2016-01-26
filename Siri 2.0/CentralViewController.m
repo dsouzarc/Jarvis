@@ -119,13 +119,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         
         NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -136,35 +130,20 @@
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
 - (void) wantsEventsNearThemWithKeyWords:(NSArray*)keyWords
 {
     NSLog(@"Wants event near them: %@", keyWords);
-    
     [self.mainViewController showText:[NSString stringWithFormat:@"Events near me: %@", keyWords]];
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMeWithKeyWords:keyWords];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -175,15 +154,8 @@
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getEventsNearMe:radius keyWords:keyWords];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -194,19 +166,10 @@
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
-
-
 
 - (void) wantsNewsItemsNearThem:(int)radius
 {
@@ -214,19 +177,10 @@
     [self.mainViewController showText:[NSString stringWithFormat:@"News Items near me: %d miles", radius]];
     [self.mainViewController showLoadingAnimation];
     
-    SEL newsItemsNearMe = NSSelectorFromString(@"getNewsItemsNearMe");
-    obj
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -236,15 +190,8 @@
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMeWithKeyWords:keyWords];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -257,15 +204,8 @@
     [self.mainViewController showLoadingAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
         NSMutableArray *dataPoints = [ParseCommunicator getNewsItemsNearMe:radius keyWords:keyWords];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
@@ -287,16 +227,18 @@
         
         //[dataPoints addObjectsFromArray:[ParseCommunicator getFamily]];
         //[dataPoints addObjectsFromArray:[ParseCommunicator getHousing]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            [self.mainViewController hideLoadingAnimation];
-            NSLog(@"LEAVING HERE WITH: %ld", dataPoints.count);
-            [self.mapViewController setDataPoints:dataPoints];
-            [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        });
+        [self showMapViewWithData:dataPoints];
     });
 }
 
+- (void) showMapViewWithData:(NSMutableArray*)dataPoints
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        
+        [self.mainViewController hideLoadingAnimation];
+        [self.mapViewController setDataPoints:dataPoints];
+        [self.pageViewController setViewControllers:@[self.mapViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    });
+}
 
 @end

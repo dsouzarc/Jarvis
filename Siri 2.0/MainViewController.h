@@ -16,7 +16,7 @@
 #import "PQFBouncingBalls.h"
 #import "MapViewController.h"
 
-@interface MainViewController : UIViewController <HoundHandlerDelegate>
+@interface MainViewController : UIViewController
 
 - (void) showLoadingAnimation;
 - (void) hideLoadingAnimation;

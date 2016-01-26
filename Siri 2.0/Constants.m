@@ -18,6 +18,15 @@ static Constants *instance;
 
 @implementation Constants
 
+
+/****************************************************************
+ *
+ *              Constructor
+ *
+*****************************************************************/
+
+# pragma mark Constructor
+
 + (instancetype) getInstance
 {
     @synchronized(self) {
@@ -41,25 +50,47 @@ static Constants *instance;
     return self;
 }
 
+
+/****************************************************************
+ *
+ *              Get location
+ *
+*****************************************************************/
+
+# pragma mark Get location
+
 - (CLLocation*) getMyLocation
 {
+    //TODO: Remove test location
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:39.950261944607128 longitude:-75.198576668218848];
+    return location;
+    
     return self.locationManager.location;
 }
 
 - (PFGeoPoint*) getGeoPoint
 {
-    return [PFGeoPoint geoPointWithLocation:self.locationManager.location];
+    return [PFGeoPoint geoPointWithLocation:[self getMyLocation]];
 }
 
 - (double) getMyLatitude
 {
-    return self.locationManager.location.coordinate.latitude;
+    return [[self getMyLocation] coordinate].latitude;
 }
 
 - (double) getMyLongitude
 {
-    return self.locationManager.location.coordinate.longitude;
+    return [[self getMyLocation] coordinate].longitude;
 }
+
+
+/****************************************************************
+ *
+ *              Get App ID information
+ *
+*****************************************************************/
+
+# pragma mark Get App ID information
 
 + (NSString*) getParseAppId
 {
