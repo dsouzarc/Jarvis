@@ -10,9 +10,7 @@ Description on [Devpost page](http://devpost.com/software/jarvis-dpi4w5)
 
 --- 
 
-[MP4 Demo Link] (https://github.com/dsouzarc/Jarvis/blob/master/Demos/Jarvis%20Demo%20-%20High%20Quality.mp4)
-
-[Demo] (https://github.com/dsouzarc/Jarvis/blob/master/Demos/Jarvis%20Demo%20-%20High%20Quality.mp4)
+[Demo video] (https://www.dropbox.com/s/8vp1uvcz2w7506v/Jarvis%20Demo%20-%20High%20Quality.mp4?dl=0)
 
 ---
 
