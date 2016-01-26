@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9405F7071C535D3000C39CD8"
                BuildableName = "Siri 2.0.app"
                BlueprintName = "Siri 2.0"
-               ReferencedContainer = "container:Siri 2.0.xcodeproj">
+               ReferencedContainer = "container:Jarvis.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "9405F7201C535D3000C39CD8"
                BuildableName = "Siri 2.0Tests.xctest"
                BlueprintName = "Siri 2.0Tests"
-               ReferencedContainer = "container:Siri 2.0.xcodeproj">
+               ReferencedContainer = "container:Jarvis.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "9405F72B1C535D3000C39CD8"
                BuildableName = "Siri 2.0UITests.xctest"
                BlueprintName = "Siri 2.0UITests"
-               ReferencedContainer = "container:Siri 2.0.xcodeproj">
+               ReferencedContainer = "container:Jarvis.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "9405F7071C535D3000C39CD8"
             BuildableName = "Siri 2.0.app"
             BlueprintName = "Siri 2.0"
-            ReferencedContainer = "container:Siri 2.0.xcodeproj">
+            ReferencedContainer = "container:Jarvis.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "9405F7071C535D3000C39CD8"
             BuildableName = "Siri 2.0.app"
             BlueprintName = "Siri 2.0"
-            ReferencedContainer = "container:Siri 2.0.xcodeproj">
+            ReferencedContainer = "container:Jarvis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "9405F7071C535D3000C39CD8"
             BuildableName = "Siri 2.0.app"
             BlueprintName = "Siri 2.0"
-            ReferencedContainer = "container:Siri 2.0.xcodeproj">
+            ReferencedContainer = "container:Jarvis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

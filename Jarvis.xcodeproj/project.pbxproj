@@ -507,7 +507,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9405F7031C535D3000C39CD8 /* Build configuration list for PBXProject "Siri 2.0" */;
+			buildConfigurationList = 9405F7031C535D3000C39CD8 /* Build configuration list for PBXProject "Jarvis" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -745,6 +745,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -765,6 +766,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryan.Siri-2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -819,7 +821,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9405F7031C535D3000C39CD8 /* Build configuration list for PBXProject "Siri 2.0" */ = {
+		9405F7031C535D3000C39CD8 /* Build configuration list for PBXProject "Jarvis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9405F7331C535D3000C39CD8 /* Debug */,
