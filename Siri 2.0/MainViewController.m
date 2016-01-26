@@ -8,6 +8,54 @@
 
 #import "MainViewController.h"
 
+@interface VisualizerLineView : UIView
+
+@property int counter;
+- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel;
+
+@end
+
+@interface VisualizerLineView ()
+
+@property CGPoint startPoint;
+@property CGPoint endPoint;
+
+@property float audioLevel;
+
+@end
+
+@implementation VisualizerLineView
+
+- (instancetype) initWithFrame:(CGRect)frame audioLevel:(float)audioLevel
+{
+    self = [super initWithFrame:frame];
+    
+    if(self) {
+        self.audioLevel = audioLevel;
+    }
+    
+    return self;
+}
+
+- (void) drawRect:(CGRect)rect
+{
+    UIBezierPath *audioVisualBezierPath = [UIBezierPath bezierPath];
+    CAShapeLayer *audioVisualShapeLayer = [CAShapeLayer layer];
+    
+    self.startPoint = CGPointMake(0, 0);
+    self.endPoint = CGPointMake(0, self.frame.size.height);
+    
+    [audioVisualBezierPath moveToPoint:self.startPoint];
+    [audioVisualBezierPath addLineToPoint:self.endPoint];
+    audioVisualShapeLayer.path  = [audioVisualBezierPath CGPath];
+    [audioVisualShapeLayer setStrokeColor:[[UIColor blueColor] CGColor]];
+    audioVisualShapeLayer.lineWidth = 1.0f;
+    
+    [self.layer addSublayer:audioVisualShapeLayer];
+}
+
+@end
+
 @interface MainViewController ()
 
 @property (strong, nonatomic) IBOutlet UIButton *houndifyMicrophoneButton;
@@ -24,6 +72,82 @@
 @end
 
 @implementation MainViewController
+
+
+- (void)audioLevel:(NSNotification*)notification
+{
+    static int lastCalledTime = -1;
+    
+    if(lastCalledTime == -1) {
+        lastCalledTime = (int) CACurrentMediaTime();
+    }
+    else if(lastCalledTime == (int)CACurrentMediaTime()) {
+        //return;
+    }
+    else {
+        lastCalledTime = (int) CACurrentMediaTime();
+    }
+    
+    
+    if((int)CACurrentMediaTime() % 2 == 0) {
+        NSLog(@"IS EVEN\t%f\t%f", CACurrentMediaTime(), [notification.object floatValue]);
+    }
+    else {
+        NSLog(@"IS ODD\t%f\t%f", CACurrentMediaTime(), [notification.object floatValue]);
+    }
+    
+    // Display current audio level
+    
+    //Between 0 and 1
+    float audioLevel = [notification.object floatValue];
+
+    CGPoint startPoint = CGPointMake(0, self.view.frame.size.height);
+    CGPoint endPoint = CGPointMake(0, self.view.frame.size.height - (audioLevel * 100.0));
+    
+    static int counter = 0;
+    
+    if(audioLevel > 0.5) {
+        //NSLog(@"AUDIO LEVEL UPPER\t%f", audioLevel);
+    }
+    else {
+        //NSLog(@"AUDIO LEVEL UPPER\t%f", audioLevel);
+    }
+    
+    //NSLog(@"%f\t%f\t%f", self.view.frame.size.height, audioLevel, endPoint.y);
+    
+    //VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - (audioLevel * 300.0), 10, audioLevel * 300.0) startPoint:startPoint endPoint:endPoint];
+    VisualizerLineView *lineView = [[VisualizerLineView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - (audioLevel * 100.0), 1, audioLevel * 100.0) audioLevel:audioLevel];
+    lineView.counter = counter;
+    counter++;
+    [self.view addSubview:lineView];
+    [UIView animateWithDuration:5
+                     animations:^(void) {
+                         lineView.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height - (audioLevel * 100.0), 1, audioLevel * 100.0);
+                     } completion:^(BOOL finished) {
+                         [lineView removeFromSuperview];
+                     }
+     ];
+    
+    /*[self.audioVisualShapeLayer removeFromSuperlayer];
+     self.audioVisualBezierPath = [UIBezierPath bezierPath];
+     self.audioVisualShapeLayer = [CAShapeLayer layer];
+     
+     [self.audioVisualBezierPath moveToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y)];
+     [self.audioVisualBezierPath addLineToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y - 300 * audioLevel)];
+     self.audioVisualShapeLayer.path  = [self.audioVisualBezierPath CGPath];
+     self.audioVisualShapeLayer.lineWidth = 3.0f;
+     
+     if(self.microphoneIsRecognizing) {
+     self.audioVisualShapeLayer.strokeColor = [[UIColor greenColor] CGColor];
+     self.audioVisualShapeLayer.fillColor = [[UIColor greenColor] CGColor];
+     }
+     else {
+     self.audioVisualShapeLayer.strokeColor = [[UIColor redColor] CGColor];
+     self.audioVisualShapeLayer.fillColor = [[UIColor redColor] CGColor];
+     }
+     
+     [self.view.layer addSublayer:self.audioVisualShapeLayer];*/
+}
 
 
 /****************************************************************
@@ -253,34 +377,6 @@
     }
 }
 
-- (void)audioLevel:(NSNotification*)notification
-{
-    // Display current audio level
-    
-    //Between 0 and 1
-    float audioLevel = [notification.object floatValue];
-    
-    [self.audioVisualShapeLayer removeFromSuperlayer];
-    self.audioVisualBezierPath = [UIBezierPath bezierPath];
-    self.audioVisualShapeLayer = [CAShapeLayer layer];
-    
-    [self.audioVisualBezierPath moveToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y)];
-    [self.audioVisualBezierPath addLineToPoint:CGPointMake(self.houndifyMicrophoneButton.center.x, self.houndifyMicrophoneButton.center.y - 300 * audioLevel)];
-    self.audioVisualShapeLayer.path  = [self.audioVisualBezierPath CGPath];
-    self.audioVisualShapeLayer.lineWidth = 3.0f;
-    
-    if(self.microphoneIsRecognizing) {
-        self.audioVisualShapeLayer.strokeColor = [[UIColor greenColor] CGColor];
-        self.audioVisualShapeLayer.fillColor = [[UIColor greenColor] CGColor];
-    }
-    else {
-        self.audioVisualShapeLayer.strokeColor = [[UIColor redColor] CGColor];
-        self.audioVisualShapeLayer.fillColor = [[UIColor redColor] CGColor];
-    }
-    
-    [self.view.layer addSublayer:self.audioVisualShapeLayer];
-}
-
 - (void) switchHoundVoiceState
 {
     switch (HoundVoiceSearch.instance.state) {
@@ -337,3 +433,4 @@
 }
 
 @end
+
